@@ -1,10 +1,19 @@
 import { groq } from 'next-sanity'
 
+const figureQuery = `
+_type, alt, caption, 'image': image.asset->
+`
+const ctaQuery = `text, kind, "slug": reference->slug.current, url`
+const pageContentQuery = `
+_type == 'figure' => {${figureQuery}}, _type == 'cta
+> {${ctaQuery}}, type == 'imageWithText => {...,}`
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     footer,
     overview,
+    pageHero{${figureQuery}},
+    landingCta{${ctaQuery}},
     showcaseProjects[]->{
       _type,
       coverImage,

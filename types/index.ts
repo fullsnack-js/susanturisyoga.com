@@ -1,9 +1,39 @@
 import type { Image, PortableTextBlock } from 'sanity'
 
+export interface PageContent {
+  cta: CTA
+  imageWithText: ImageWithText
+  figure: Figure
+  content: PortableTextBlock[]
+}
+
 export interface MenuItem {
   _type: string
   slug?: string
   title?: string
+}
+
+export interface CTA {
+  _type: string
+  title: string
+  url?: string
+  reference?: any
+  kind: 'button' | 'link' | 'arrow'
+}
+
+export interface ImageWithText {
+  _type: string
+  layout: 'media-left' | 'media-right'
+  body?: PortableTextBlock[]
+  links?: any[]
+  media: Figure
+}
+
+export interface Figure {
+  _type: string
+  image: Image
+  alt: string
+  caption?: string
 }
 
 export interface MilestoneItem {
@@ -39,6 +69,7 @@ export interface PagePayload {
   body?: PortableTextBlock[]
   name?: string
   overview?: PortableTextBlock[]
+  content?: any
   title?: string
   slug?: string
 }

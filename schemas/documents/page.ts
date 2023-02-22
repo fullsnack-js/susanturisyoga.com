@@ -1,11 +1,13 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { ComposeIcon, DocumentIcon, ImageIcon, SearchIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { getIcon } from 'schemas/utils/get-icon'
 
 export default defineType({
   type: 'document',
   name: 'page',
   title: 'Page',
-  icon: DocumentIcon,
+  icon: getIcon('page'),
+  groups: [{ name: 'seo', title: 'SEO', icon: SearchIcon }],
   fields: [
     defineField({
       type: 'string',
@@ -52,68 +54,22 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      title: 'Page Content',
+      name: 'pageContent',
       type: 'array',
-      name: 'body',
-      title: 'Body',
-      description:
-        "This is where you can write the page's content. Including custom blocks like timelines for more a more visual display of information.",
+      icon: getIcon('pageSections'),
       of: [
-        // Paragraphs
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
-        defineField({
-          type: 'image',
-          icon: ImageIcon,
-          name: 'image',
-          title: 'Image',
-          options: {
-            hotspot: true,
-          },
-          preview: {
-            select: {
-              imageUrl: 'asset.url',
-              title: 'caption',
-            },
-          },
-          fields: [
-            defineField({
-              title: 'Caption',
-              name: 'caption',
-              type: 'string',
-            }),
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alt text',
-              description:
-                'Alternative text for screenreaders. Falls back on caption if not set',
-            }),
-          ],
-        }),
+        { type: 'cta' },
+        { type: 'imageWithText' },
+        { type: 'richText' },
+        { type: 'figure' },
       ],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+      group: 'seo',
     }),
   ],
   preview: {

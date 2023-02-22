@@ -10,6 +10,7 @@ import { pageStructure, singletonPlugin } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
+import { person, policy, venue } from 'schemas/documents'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
 import duration from 'schemas/objects/duration'
@@ -17,6 +18,25 @@ import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
 import home from 'schemas/singletons/home'
 import settings from 'schemas/singletons/settings'
+
+import { globalSettings } from './schemas/documents/globalSettings'
+import { yogaClass } from './schemas/documents/yogaClass'
+import { ctaType } from './schemas/objects/callToAction'
+import { classSettingType } from './schemas/objects/classSetting'
+import { content } from './schemas/objects/richText'
+import { eventCalendarType } from './schemas/objects/eventCalendar'
+import { figureType } from './schemas/objects/figure'
+import { imageWithText } from './schemas/objects/imageWithText'
+import { link } from './schemas/objects/link'
+import { linkExternal } from './schemas/objects/linkExternal'
+import { linkInternal } from './schemas/objects/linkInternal'
+import { navigationItemType } from './schemas/objects/navigationItem'
+import { portableText } from './schemas/objects/portableText'
+import { portableTextSimple } from './schemas/objects/portableTextSimple'
+import { scheduleType } from './schemas/objects/schedule'
+import { seo } from './schemas/objects/seo'
+import { socialType } from './schemas/objects/social'
+import { timeRange } from './schemas/objects/time-range'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -40,10 +60,32 @@ export default defineConfig({
       home,
       settings,
       // Documents
+      globalSettings,
       duration,
       page,
+      person,
+      policy,
       project,
+      venue,
+      yogaClass,
+
       // Objects
+      ctaType,
+      classSettingType,
+      content,
+      eventCalendarType,
+      figureType,
+      imageWithText,
+      link,
+      linkExternal,
+      linkInternal,
+      navigationItemType,
+      portableText,
+      portableTextSimple,
+      scheduleType,
+      seo,
+      socialType,
+      timeRange,
       milestone,
       timeline,
     ],
