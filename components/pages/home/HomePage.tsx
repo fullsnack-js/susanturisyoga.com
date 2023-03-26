@@ -6,9 +6,13 @@ import Layout from 'components/shared/Layout'
 import Newsletter from 'components/shared/Newsletter'
 import { PageContentRenderer } from 'components/shared/PageContentRenderer'
 import ScrollUp from 'components/shared/ScrollUp'
+import { configuredSanityClient } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
+import { useNextSanityImage } from 'next-sanity-image'
+import { urlFor } from 'schemas/utils/urlFor'
 import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
@@ -19,10 +23,11 @@ export interface HomePageProps {
   page?: HomePagePayload
   preview?: boolean
 }
-
+//const imageUrl = image && urlForImage(image)?.height(height).width(width).fit('crop').url()
 export function HomePage({ page, settings, preview }: HomePageProps) {
   const { overview, landingCta, pageContent, pageHero, title } = page ?? {}
-
+  const imageProps = useNextSanityImage(configuredSanityClient, pageHero.image)
+  console.log({ pageHero })
   return (
     <>
       <Head>
@@ -34,13 +39,14 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
           {/* Header */}
           {title && <Header centered title={title} subtitle={overview} />}
           {pageHero && (
-            <div className="relative w-full h-150">
-              <ImageBox
+            <div className="relative w-full drop-shadow-xl ">
+              <Image
+                {...imageProps}
                 alt={pageHero.alt}
-                image={pageHero.image}
-                size={'70vw'}
-                width={300}
-                height={200}
+                style={{ width: '100%', height: 'auto' }} // layout="responsive" prior to Next 13.0.0
+                sizes="(max-width: 800px) 100vw, 800px"
+                placeholder="blur"
+                blurDataURL={pageHero.image.asset.metadata.lqip}
               />
             </div>
           )}

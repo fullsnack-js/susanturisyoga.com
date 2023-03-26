@@ -2,6 +2,8 @@ import CTA from 'components/shared/CTA'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { FAQ } from 'components/shared/FAQs'
 import ContactForm from 'components/shared/Form'
+import Image from 'next/image'
+import { urlFor } from 'schemas/utils/urlFor'
 import type { PageContent } from 'types'
 
 export function PageContentRenderer(content: PageContent) {
@@ -26,6 +28,15 @@ export function PageContentRenderer(content: PageContent) {
       )
     case 'formSection':
       return <ContactForm {...content[0]} />
+    case 'figure':
+      return (
+        <Image
+          alt={content[0].alt}
+          src={urlFor(content[0].image).url()}
+          width={400}
+          height={300}
+        />
+      )
     default:
       return JSON.stringify(content[0], null, 2)
       break
