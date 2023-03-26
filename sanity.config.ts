@@ -13,6 +13,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { person, policy, venue } from 'schemas/documents'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
+import { questionAndAnswer } from 'schemas/objects'
 import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
@@ -23,16 +24,15 @@ import { globalSettings } from './schemas/documents/globalSettings'
 import { yogaClass } from './schemas/documents/yogaClass'
 import { ctaType } from './schemas/objects/callToAction'
 import { classSettingType } from './schemas/objects/classSetting'
-import { content } from './schemas/objects/richText'
 import { eventCalendarType } from './schemas/objects/eventCalendar'
 import { figureType } from './schemas/objects/figure'
 import { imageWithText } from './schemas/objects/imageWithText'
 import { link } from './schemas/objects/link'
 import { linkExternal } from './schemas/objects/linkExternal'
 import { linkInternal } from './schemas/objects/linkInternal'
-import { navigationItemType } from './schemas/objects/navigationItem'
 import { portableText } from './schemas/objects/portableText'
 import { portableTextSimple } from './schemas/objects/portableTextSimple'
+import { content } from './schemas/objects/richText'
 import { scheduleType } from './schemas/objects/schedule'
 import { seo } from './schemas/objects/seo'
 import { socialType } from './schemas/objects/social'
@@ -60,7 +60,7 @@ export default defineConfig({
       home,
       settings,
       // Documents
-      globalSettings,
+      // globalSettings,
       duration,
       page,
       person,
@@ -79,9 +79,9 @@ export default defineConfig({
       link,
       linkExternal,
       linkInternal,
-      navigationItemType,
       portableText,
       portableTextSimple,
+      questionAndAnswer,
       scheduleType,
       seo,
       socialType,

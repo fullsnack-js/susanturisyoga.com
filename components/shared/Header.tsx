@@ -2,12 +2,13 @@ import { CustomPortableText } from 'components/shared/CustomPortableText'
 
 interface HeaderProps {
   centered?: boolean
-  description?: any[]
+  image?: any
+  subtitle?: any[]
   title?: string
 }
 export function Header(props: HeaderProps) {
-  const { title, description, centered = false } = props
-  if (!description && !title) {
+  const { title, subtitle, image, centered = false } = props
+  if (!subtitle && !title) {
     return null
   }
   return (
@@ -19,9 +20,9 @@ export function Header(props: HeaderProps) {
         </div>
       )}
       {/* Description */}
-      {description && (
+      {subtitle && (
         <div className="mt-4 font-serif text-xl text-gray-600 md:text-2xl">
-          <CustomPortableText value={description} />
+          <CustomPortableText value={subtitle} />
         </div>
       )}
     </div>

@@ -1,18 +1,19 @@
 import { groq } from 'next-sanity'
 
 const figureQuery = `
-_type, alt, caption, 'image': image.asset->
+_type, alt, caption, image
 `
 const ctaQuery = `text, kind, "slug": reference->slug.current, url`
 const pageContentQuery = `
-_type == 'figure' => {${figureQuery}}, _type == 'cta
-> {${ctaQuery}}, type == 'imageWithText => {...,}`
+...,
+_type == 'figure' => {${figureQuery}}, _type == 'cta' => {${ctaQuery}}, _type == 'richText' => {...,}, type == 'imageWithText' => {...,}`
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
     footer,
     overview,
-    pageHero{${figureQuery}},
+    pageContent{${pageContentQuery}},
+    pageHero,
     landingCta{${ctaQuery}},
     showcaseProjects[]->{
       _type,
@@ -23,6 +24,7 @@ export const homePageQuery = groq`
       title,
     },
     title,
+    seo->
   }
 `
 
@@ -33,8 +35,10 @@ export const homePageTitleQuery = groq`
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,
-    body,
-    overview,
+    subtitle,
+     pageContent,
+    seo->,
+    coverImage {${figureQuery}},
     title,
     "slug": slug.current,
   }
@@ -71,6 +75,7 @@ export const settingsQuery = groq`
       "slug": slug.current,
       title
     },
+    seo,
     ogImage,
   }
 `

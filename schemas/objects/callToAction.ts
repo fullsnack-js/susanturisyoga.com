@@ -25,14 +25,16 @@ export const ctaType = defineType({
       type: 'url',
       title: 'Call to Action URL',
       description: 'The target URL.',
-      hidden: ({ parent }) => !parent.url && parent.reference,
+      hidden: (document) =>
+        document.parent && !document.parent.url && document.parent.reference,
       validation: (rule) => rule.uri({ scheme: ['https', 'mailto', 'tel'] }),
     }),
     defineField({
       name: 'reference',
       type: 'reference',
       title: 'Reference',
-      hidden: ({ parent }) => !parent.reference && parent.url,
+      hidden: (document) =>
+        document.parent && !document.parent.reference && document.parent.url,
       to: [{ type: 'page' }],
     }),
     defineField({

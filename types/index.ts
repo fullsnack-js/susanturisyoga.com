@@ -1,10 +1,20 @@
 import type { Image, PortableTextBlock } from 'sanity'
+export interface FAQContent {
+  title: string
+  questions: { question: string; answer: PortableTextBlock[] }[]
+}
+export type PageContent =
+  | CTA
+  | ImageWithText
+  | Figure
+  | PortableTextBlock[]
+  | FAQContent
 
-export interface PageContent {
-  cta: CTA
-  imageWithText: ImageWithText
-  figure: Figure
-  content: PortableTextBlock[]
+export interface SEO {
+  title: string
+  description?: string
+  image?: Image
+  noIndex?: boolean
 }
 
 export interface MenuItem {
@@ -60,17 +70,19 @@ export interface ShowcaseProject {
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
+  pageHero: Figure
   overview?: PortableTextBlock[]
-  showcaseProjects?: ShowcaseProject[]
+  landingCta?: CTA
+  pageContent?: PageContent
   title?: string
 }
 
 export interface PagePayload {
-  body?: PortableTextBlock[]
-  name?: string
-  overview?: PortableTextBlock[]
-  content?: any
+  seo?: SEO
+  coverImage?: Figure
+  pageContent?: PageContent
   title?: string
+  subtitle?: PortableTextBlock[]
   slug?: string
 }
 
@@ -89,8 +101,17 @@ export interface ProjectPayload {
   title?: string
 }
 
+export interface SocialItem {
+  _type: string
+  type: string
+  url: string
+}
+
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
+  seo: SEO
+  socials?: SocialItem[]
+  contactEmail: string
   ogImage?: Image
 }

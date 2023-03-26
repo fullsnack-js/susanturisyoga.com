@@ -26,8 +26,8 @@ export const seo = defineType({
       type: `text`,
       rows: 3,
       validation: (Rule) => [
-        Rule.max(180).warning('Description should be less than 180 characters'),
-        Rule.min(120).warning('Description should be at least 120 characters'),
+        Rule.max(155).warning('Description should be less than 155 characters'),
+        Rule.min(90).warning('Description should be at least 90 characters'),
       ],
     }),
     defineField({

@@ -1,5 +1,8 @@
 import { ComposeIcon, DocumentIcon, ImageIcon, SearchIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { formSection } from 'schemas/modules/form-section'
+import { faqsSection } from 'schemas/modules/questions-and-answers-section'
+import { scheduleSection } from 'schemas/modules/schedule-section'
 import { getIcon } from 'schemas/utils/get-icon'
 
 export default defineType({
@@ -16,19 +19,8 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      type: 'slug',
-      name: 'slug',
-      title: 'Slug',
-      options: {
-        source: 'title',
-      },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'overview',
-      description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
-      title: 'Overview',
+      name: 'subtitle',
+      title: 'Subtitle',
       type: 'array',
       of: [
         // Paragraphs
@@ -53,6 +45,17 @@ export default defineType({
       ],
       validation: (rule) => rule.max(155).required(),
     }),
+    defineField({ name: 'coverImage', title: 'Cover Image', type: 'figure' }),
+    defineField({
+      type: 'slug',
+      name: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+      },
+      validation: (rule) => rule.required(),
+    }),
+
     defineField({
       title: 'Page Content',
       name: 'pageContent',
@@ -63,6 +66,9 @@ export default defineType({
         { type: 'imageWithText' },
         { type: 'richText' },
         { type: 'figure' },
+        defineField(scheduleSection),
+        defineField(faqsSection),
+        defineField(formSection),
       ],
     }),
     defineField({

@@ -1,6 +1,10 @@
 import { ProjectListItem } from 'components/pages/home/ProjectListItem'
+import HookForm from 'components/shared/Form'
 import { Header } from 'components/shared/Header'
+import ImageBox from 'components/shared/ImageBox'
 import Layout from 'components/shared/Layout'
+import Newsletter from 'components/shared/Newsletter'
+import { PageContentRenderer } from 'components/shared/PageContentRenderer'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Head from 'next/head'
@@ -17,7 +21,7 @@ export interface HomePageProps {
 }
 
 export function HomePage({ page, settings, preview }: HomePageProps) {
-  const { overview, showcaseProjects, title = 'Personal website' } = page ?? {}
+  const { overview, landingCta, pageContent, pageHero, title } = page ?? {}
 
   return (
     <>
@@ -25,28 +29,24 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <HomePageHead page={page} settings={settings} />
       </Head>
 
-      <Layout settings={settings} preview={preview}>
+      <Layout home settings={settings} preview={preview}>
         <div className="space-y-20">
           {/* Header */}
-          {title && <Header centered title={title} description={overview} />}
-          {/* Showcase projects */}
-          {showcaseProjects && showcaseProjects.length > 0 && (
-            <div className="mx-auto max-w-[100rem] rounded-md border">
-              {showcaseProjects.map((project, key) => {
-                const href = resolveHref(project._type, project.slug)
-                if (!href) {
-                  return null
-                }
-                return (
-                  <Link key={key} href={href}>
-                    <ProjectListItem project={project} odd={key % 2} />
-                  </Link>
-                )
-              })}
+          {title && <Header centered title={title} subtitle={overview} />}
+          {pageHero && (
+            <div className="relative w-full h-150">
+              <ImageBox
+                alt={pageHero.alt}
+                image={pageHero.image}
+                size={'70vw'}
+                width={300}
+                height={200}
+              />
             </div>
           )}
-
+          {pageContent && PageContentRenderer(pageContent)}
           {/* Workaround: scroll to top on route change */}
+
           <ScrollUp />
         </div>
       </Layout>

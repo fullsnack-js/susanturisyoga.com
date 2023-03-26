@@ -1,10 +1,11 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
+import ImageBox from 'components/shared/ImageBox'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
 import type { PagePayload, SettingsPayload } from 'types'
 
+import { PageContentRenderer } from '../../shared/PageContentRenderer'
 import PageHead from './PageHead'
 
 export interface PageProps {
@@ -16,7 +17,7 @@ export interface PageProps {
 
 export function Page({ page, settings, homePageTitle, preview }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = page || {}
+  const { pageContent, coverImage, subtitle, title } = page || {}
 
   return (
     <>
@@ -27,16 +28,20 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
       <Layout settings={settings} preview={preview}>
         <div>
           <div className="mb-14">
+            {/* {coverImage && (
+              <ImageBox
+                image={coverImage.image}
+                alt={coverImage.alt || 'Timeline item icon'}
+                size="10vw"
+                width={65}
+                height={65}
+              />
+            )} */}
             {/* Header */}
-            <Header title={title} description={overview} />
+            <Header centered title={title} subtitle={subtitle} />
 
             {/* Body */}
-            {body && (
-              <CustomPortableText
-                paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
-                value={body}
-              />
-            )}
+            {pageContent && PageContentRenderer(pageContent)}
 
             {/* Workaround: scroll to top on route change */}
             <ScrollUp />

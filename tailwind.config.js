@@ -1,5 +1,5 @@
 const { theme } = require('@sanity/demo/tailwind')
-
+const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,6 +9,7 @@ module.exports = {
   ],
   theme: {
     ...theme,
+    colors: { ...colors },
     // Overriding fontFamily to use @next/font loaded families
     fontFamily: {
       mono: 'var(--font-mono)',
@@ -16,5 +17,5 @@ module.exports = {
       serif: 'var(--font-serif)',
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
