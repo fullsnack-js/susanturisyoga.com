@@ -59,16 +59,6 @@ export async function getPageBySlug({
   return await sanityClient(token)?.fetch(pagesBySlugQuery, { slug })
 }
 
-export async function getProjectBySlug({
-  slug,
-  token,
-}: {
-  slug: string
-  token?: string
-}): Promise<ProjectPayload | undefined> {
-  return await sanityClient(token)?.fetch(projectBySlugQuery, { slug })
-}
-
 export async function getSettings({
   token,
 }: {
@@ -77,10 +67,19 @@ export async function getSettings({
   return await sanityClient(token)?.fetch(settingsQuery)
 }
 
+export async function getPagePaths(): Promise<string[]> {
+  return await sanityClient()?.fetch(pagePaths)
+}
+
 export async function getProjectPaths(): Promise<string[]> {
   return await sanityClient()?.fetch(projectPaths)
 }
-
-export async function getPagePaths(): Promise<string[]> {
-  return await sanityClient()?.fetch(pagePaths)
+export async function getProjectBySlug({
+  slug,
+  token,
+}: {
+  slug: string
+  token?: string
+}): Promise<ProjectPayload | undefined> {
+  return await sanityClient(token)?.fetch(projectBySlugQuery, { slug })
 }

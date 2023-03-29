@@ -2,16 +2,13 @@ import { groq } from 'next-sanity'
 
 const figureQuery = `
 _type, alt, caption, "image":image {...,
-					asset->{
-						...,
-						metadata
-					}
+					asset->
         }
 `
 const ctaQuery = `text, kind, "slug": reference->slug.current, url`
 const pageContentQuery = `
 ...,
-_type == 'figure' => {${figureQuery}}, _type == 'cta' => {${ctaQuery}}, _type == 'richText' => {...,}, type == 'imageWithText' => {...,}`
+_type == 'figure' => {${figureQuery}}, _type == 'cta' => {${ctaQuery}}, _type == 'richText' => {...,}, type == 'imageWithText' => {...,}, _type == 'scheduleSection' => {classes[]->{...,}}`
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     _id,
@@ -49,6 +46,23 @@ export const pagesBySlugQuery = groq`
   }
 `
 
+export const pagePaths = groq`
+  *[_type == "page" && slug.current != null].slug.current
+`
+
+export const settingsQuery = groq`
+  *[_type == "settings"][0]{
+    footer,
+    menuItems[]->{
+      _type,
+      "slug": slug.current,
+      title
+    },
+    seo,
+    ogImage,
+  }
+`
+
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
     _id,
@@ -66,21 +80,4 @@ export const projectBySlugQuery = groq`
 
 export const projectPaths = groq`
   *[_type == "project" && slug.current != null].slug.current
-`
-
-export const pagePaths = groq`
-  *[_type == "page" && slug.current != null].slug.current
-`
-
-export const settingsQuery = groq`
-  *[_type == "settings"][0]{
-    footer,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title
-    },
-    seo,
-    ogImage,
-  }
 `

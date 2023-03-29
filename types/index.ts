@@ -1,4 +1,5 @@
-import type { Image, PortableTextBlock } from 'sanity'
+import { SanityImageSource } from '@sanity/asset-utils'
+import type { Image, ImageMetadata, PortableTextBlock } from 'sanity'
 export interface FAQContent {
   title: string
   questions: { question: string; answer: PortableTextBlock[] }[]
@@ -41,7 +42,29 @@ export interface ImageWithText {
 
 export interface Figure {
   _type: string
-  image: Image
+  image: {
+    _type: string
+    asset: {
+      _id: string
+      _type: string
+      assetId: string
+      extension: string
+      url: string
+      metadata: {
+        _type: string
+        dimensions: {
+          _type: string
+          aspectRatio: number
+          height: number
+          width: number
+        }
+        exif?: { [key: string]: string }
+        hasAlpha?: boolean
+        isOpaque?: boolean
+        lqip?: string
+      }
+    }
+  }
   alt: string
   caption?: string
 }

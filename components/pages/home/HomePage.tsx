@@ -1,4 +1,6 @@
 import { ProjectListItem } from 'components/pages/home/ProjectListItem'
+import Schedule from 'components/shared/Calendar'
+import { CustomPortableText } from 'components/shared/CustomPortableText'
 import HookForm from 'components/shared/Form'
 import { Header } from 'components/shared/Header'
 import ImageBox from 'components/shared/ImageBox'
@@ -27,7 +29,7 @@ export interface HomePageProps {
 export function HomePage({ page, settings, preview }: HomePageProps) {
   const { overview, landingCta, pageContent, pageHero, title } = page ?? {}
   const imageProps = useNextSanityImage(configuredSanityClient, pageHero.image)
-  console.log({ pageHero })
+  console.log({ image: pageHero.image.asset })
   return (
     <>
       <Head>
@@ -35,22 +37,58 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       </Head>
 
       <Layout home settings={settings} preview={preview}>
-        <div className="space-y-20">
+        <div className="-mt-20 mx-auto w-full space-y-8">
           {/* Header */}
-          {title && <Header centered title={title} subtitle={overview} />}
-          {pageHero && (
-            <div className="relative w-full drop-shadow-xl ">
-              <Image
-                {...imageProps}
-                alt={pageHero.alt}
-                style={{ width: '100%', height: 'auto' }} // layout="responsive" prior to Next 13.0.0
-                sizes="(max-width: 800px) 100vw, 800px"
-                placeholder="blur"
-                blurDataURL={pageHero.image.asset.metadata.lqip}
-              />
+          <div className="w-full container  flex flex-col sm:flex-row items-center sm:justify-between md:h-[75vh] md:px-10 sm:space-x-4 lg:px-12 xl:px-14 pb-6 md:mb-12">
+            {pageHero && (
+              <div className="w-full sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
+                <Image
+                  {...imageProps}
+                  alt={pageHero.alt}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                    objectPosition: 'bottom',
+                  }}
+                  sizes="(max-width: 300px) 100vw, 300px"
+                  placeholder="blur"
+                  blurDataURL={pageHero.image.asset.metadata.lqip}
+                />
+              </div>
+            )}
+            <div className="absolute bottom-0 bg-indigo-200/75 sm:bg-inherit sm:relative w-full sm:w-1/2 md:h-3/5 px-4">
+              <div className="text-3xl font-extrabold tracking-tight md:text-4xl">
+                {title}
+              </div>
+
+              {overview && (
+                <div className="mt-4 font-serif text-md md:text-lg text-gray-600 ">
+                  <CustomPortableText value={overview} />
+                </div>
+              )}
+              <div className="flex max-w-md gap-x-4 p-4">
+                <button
+                  type="submit"
+                  className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                >
+                  Take A Class {'->'}
+                </button>
+                <button
+                  type="submit"
+                  className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                >
+                  Contact
+                </button>
+              </div>
             </div>
-          )}
-          {pageContent && PageContentRenderer(pageContent)}
+          </div>
+
+          <div className="container">
+            {' '}
+            <Schedule />
+            {pageContent && PageContentRenderer(pageContent)}
+          </div>
           {/* Workaround: scroll to top on route change */}
 
           <ScrollUp />

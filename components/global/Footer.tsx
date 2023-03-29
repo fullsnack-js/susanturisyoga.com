@@ -17,28 +17,7 @@ export function Footer({ footer, menuItems }: FooterProps) {
             value={footer}
           />
         )}
-        <nav
-          className="-mb-6 flex flex-wrap sm:flex-nowrap justify-center space-x-14"
-          aria-label="Footer"
-        >
-          {menuItems &&
-            menuItems.map((menuItem, key) => {
-              const href = resolveHref(menuItem?._type, menuItem?.slug)
-              if (!href) {
-                return null
-              }
-              return (
-                <Link
-                  key={key}
-                  className={`pb-6 text-sm md:text-md leading-6 text-gray-600 hover:text-gray-900`}
-                  href={href}
-                >
-                  {menuItem.title.startsWith('Susan') ? 'Home' : menuItem.title}
-                </Link>
-              )
-            })}
-        </nav>
-        <div className="mt-12 border-t border-gray-900/10 pt-6 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+        <div className="mt-12 pb-6 border-t border-gray-900/10 pt-6 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-sm font-semibold leading-6 text-gray-900">
               Subscribe to our newsletter
@@ -71,6 +50,29 @@ export function Footer({ footer, menuItems }: FooterProps) {
             </div>
           </form>
         </div>
+        <hr />
+        <nav
+          className="pt-6 -mb-6 flex flex-wrap sm:flex-nowrap justify-center space-x-14"
+          aria-label="Footer"
+        >
+          {menuItems &&
+            menuItems.map((menuItem, key) => {
+              const href = resolveHref(menuItem?._type, menuItem?.slug)
+              if (!href) {
+                return null
+              }
+              return (
+                <Link
+                  key={key}
+                  className={`pb-6 text-sm md:text-md leading-6 text-gray-600 hover:text-gray-900`}
+                  href={href}
+                >
+                  {menuItem.title.startsWith('Susan') ? 'Home' : menuItem.title}
+                </Link>
+              )
+            })}
+        </nav>
+
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} Susan Turis Yoga. All rights
           reserved.

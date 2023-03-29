@@ -25,7 +25,7 @@ export default function Layout({
   home,
 }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-black">
+    <div className="flex min-h-screen max-w-7xl flex-col bg-white text-black">
       {preview && <PreviewBanner />}
       <Navbar menuItems={settings?.menuItems} />
       <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">{children}</div>

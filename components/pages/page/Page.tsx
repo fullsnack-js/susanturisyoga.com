@@ -1,3 +1,4 @@
+import Schedule from 'components/shared/Calendar'
 import { Header } from 'components/shared/Header'
 import ImageBox from 'components/shared/ImageBox'
 import Layout from 'components/shared/Layout'
@@ -39,7 +40,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             )} */}
             {/* Header */}
             <Header centered title={title} subtitle={subtitle} />
-
+            {page.slug == 'schedule' && <Schedule />}
             {/* Body */}
             {pageContent && PageContentRenderer(pageContent)}
 

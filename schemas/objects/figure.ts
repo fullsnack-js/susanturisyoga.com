@@ -23,7 +23,7 @@ export const figureType = defineType({
       type: 'image',
       options: {
         hotspot: true,
-        metadata: ['exif', 'location', 'lqip', 'palette'],
+        metadata: ['blurhash','exif', 'location', 'lqip', 'palette'],
       },
     }),
     defineField({

@@ -6,7 +6,10 @@ import Image from 'next/image'
 import { urlFor } from 'schemas/utils/urlFor'
 import type { PageContent } from 'types'
 
+import Schedule from './Calendar'
+
 export function PageContentRenderer(content: PageContent) {
+  console.log(content)
   switch (content[0]._type) {
     case 'faqsSection':
       return <FAQ {...content[0]} />
@@ -37,6 +40,8 @@ export function PageContentRenderer(content: PageContent) {
           height={300}
         />
       )
+    case 'scheduleSection':
+      return <Schedule />
     default:
       return JSON.stringify(content[0], null, 2)
       break
