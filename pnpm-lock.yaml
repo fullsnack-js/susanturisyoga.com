@@ -1,6 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fullcalendar/core': ^6.1.5
+  '@fullcalendar/daygrid': ^6.1.5
+  '@fullcalendar/google-calendar': ^6.1.5
+  '@fullcalendar/react': ^6.1.5
+  '@fullcalendar/timegrid': ^6.1.5
   '@headlessui/react': ^1.7.13
   '@heroicons/react': ^2.0.16
   '@hookform/resolvers': ^3.0.0
@@ -40,6 +45,7 @@ specifiers:
   react-hook-form: ^7.43.7
   react-icons: ^4.7.1
   react-is: ^18.2.0
+  react-timetable-events: ^2.0.0
   sanity: ^3.2.1
   sanity-plugin-asset-source-unsplash: ^1.0.6
   server-only: ^0.0.1
@@ -50,6 +56,11 @@ specifiers:
   zod: ^3.21.4
 
 dependencies:
+  '@fullcalendar/core': 6.1.5
+  '@fullcalendar/daygrid': 6.1.5_@fullcalendar+core@6.1.5
+  '@fullcalendar/google-calendar': 6.1.5_@fullcalendar+core@6.1.5
+  '@fullcalendar/react': 6.1.5_fmbwmbvmlpc6j77kvpbehkuyfm
+  '@fullcalendar/timegrid': 6.1.5_@fullcalendar+core@6.1.5
   '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
   '@heroicons/react': 2.0.16_react@18.2.0
   '@hookform/resolvers': 3.0.0_react-hook-form@7.43.7
@@ -80,6 +91,7 @@ dependencies:
   react-hook-form: 7.43.7_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
   react-is: 18.2.0
+  react-timetable-events: 2.0.0_biqbaboplfbrettd7655fr4n2y
   sanity: 3.2.6_uzkadyugscbibgo6xwbyewzpjq
   sanity-plugin-asset-source-unsplash: 1.0.6_hfs3wd77liajulqli2qbldk5tq
   server-only: 0.0.1
@@ -758,6 +770,49 @@ packages:
       '@floating-ui/dom': 1.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@fullcalendar/core/6.1.5:
+    resolution: {integrity: sha512-U3ZJy1JGAgvyXG4iLWvTW4osbkt5Fj9gmbU1B+RyRhiqwXGE0F329sX7kqLTzj3QI1IPzyq6xnJfWUIsAe7+qw==}
+    dependencies:
+      preact: 10.12.1
+    dev: false
+
+  /@fullcalendar/daygrid/6.1.5_@fullcalendar+core@6.1.5:
+    resolution: {integrity: sha512-wXQUNPOyEQ1FEHVdtxP/tLcAAGwY4zeFejujhcznhKC751X8voInF+7kFmI7GDTVgX9cd72Muku3c+gHi8ygEQ==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.5
+    dependencies:
+      '@fullcalendar/core': 6.1.5
+    dev: false
+
+  /@fullcalendar/google-calendar/6.1.5_@fullcalendar+core@6.1.5:
+    resolution: {integrity: sha512-AnqHlU7/TmgeluRgZ/m8T+PJmzfiKQgyZ/8SvS2dxksykgvHLznrWRUv292rYiT+V68Rig19rE5Ey1+sHVH9Dg==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.5
+    dependencies:
+      '@fullcalendar/core': 6.1.5
+    dev: false
+
+  /@fullcalendar/react/6.1.5_fmbwmbvmlpc6j77kvpbehkuyfm:
+    resolution: {integrity: sha512-OVQJQhtDAwxHbFk84bm5Y6iGLjGDrrBgr3491JbfnqHUjSaO+T1rNHUvtnot0X4/ZdnoxWr2nKqxPxpmCCL/lw==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.5
+      react: ^16.7.0 || ^17 || ^18
+      react-dom: ^16.7.0 || ^17 || ^18
+    dependencies:
+      '@fullcalendar/core': 6.1.5
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@fullcalendar/timegrid/6.1.5_@fullcalendar+core@6.1.5:
+    resolution: {integrity: sha512-phofe7XQ+JbejQB9zGqtZOGmPr/vMkfkK5dwPY4rOjxZOG/wspL3aXoSurmXaVP5CIiRWBvX9QPq0UgVJt0j5A==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.5
+    dependencies:
+      '@fullcalendar/core': 6.1.5
+      '@fullcalendar/daygrid': 6.1.5_@fullcalendar+core@6.1.5
     dev: false
 
   /@headlessui/react/1.7.13_biqbaboplfbrettd7655fr4n2y:
@@ -5091,6 +5146,10 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
+  /preact/10.12.1:
+    resolution: {integrity: sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg==}
+    dev: false
+
   /prelude-ls/1.1.2:
     resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
     engines: {node: '>= 0.8.0'}
@@ -5391,6 +5450,19 @@ packages:
     resolution: {integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==}
     dependencies:
       prop-types: 15.8.1
+    dev: false
+
+  /react-timetable-events/2.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-fiMHxor1kILwn1sB4y1zAzy++CSPokDZijkZFMk2q/D6AtUtJwK879LNlkyufEqXDRrYfllyx2tF7SHhWqmCbg==}
+    peerDependencies:
+      prop-types: ^15.8.1
+      react: ^16.8.0
+      react-dom: ^16.8.0
+    dependencies:
+      date-fns: 2.29.3
+      lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:
