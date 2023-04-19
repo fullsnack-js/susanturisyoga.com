@@ -72,7 +72,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                   type="submit"
                   className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                 >
-                  Take A Class {'->'}
+                  Take A Class {`&rarr;`}
                 </button>
                 <button
                   type="submit"
