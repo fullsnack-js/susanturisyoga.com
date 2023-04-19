@@ -37,11 +37,11 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       </Head>
 
       <Layout home settings={settings} preview={preview}>
-        <div className="-mt-20 mx-auto w-full space-y-8">
+        <div className="mx-auto -mt-20 w-full space-y-8">
           {/* Header */}
-          <div className="w-full container  flex flex-col sm:flex-row items-center sm:justify-between md:h-[75vh] md:px-10 sm:space-x-4 lg:px-12 xl:px-14 pb-6 md:mb-12">
+          <div className="container flex w-full flex-col items-center pb-4 sm:flex-row  sm:justify-between sm:space-x-4 sm:pb-4 md:mb-12 md:h-[75vh] md:px-10 md:pb-8 lg:px-12 lg:pb-10 xl:px-14">
             {pageHero && (
-              <div className="w-full sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
+              <div className="w-full px-4 drop-shadow-xl sm:w-1/2 md:h-3/5">
                 <Image
                   {...imageProps}
                   alt={pageHero.alt}
@@ -57,13 +57,13 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 />
               </div>
             )}
-            <div className="absolute bottom-0 bg-indigo-200/75 sm:bg-inherit sm:relative w-full sm:w-1/2 md:h-3/5 px-4">
+            <div className="absolute bottom-0 w-full bg-indigo-200/75 px-4 sm:relative sm:w-1/2 sm:bg-inherit md:h-3/5">
               <div className="text-3xl font-extrabold tracking-tight md:text-4xl">
                 {title}
               </div>
 
               {overview && (
-                <div className="mt-4 font-serif text-md md:text-lg text-gray-600 ">
+                <div className="text-md mt-4 font-serif text-gray-600 md:text-lg ">
                   <CustomPortableText value={overview} />
                 </div>
               )}
@@ -84,7 +84,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
             </div>
           </div>
 
-          <div className="container">
+          <div className="pt:0 container px-4 pb-6">
             {' '}
             <Schedule />
             {pageContent && PageContentRenderer(pageContent)}

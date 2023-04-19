@@ -15,11 +15,11 @@ export const FAQ = ({ title, questions: faqs }: FAQContent) => {
                   <span className="text-base font-semibold leading-7">
                     {faq.question}
                   </span>
-                  <span className="ml-5 flex h-5 items-center">
+                  <span className="ml-5 flex h-4 items-center">
                     {open ? (
-                      <MinusSmallIcon className="h-5 w-5" aria-hidden="true" />
+                      <MinusSmallIcon className="h-4 w-4" aria-hidden="true" />
                     ) : (
-                      <PlusSmallIcon className="h-5 w-5" aria-hidden="true" />
+                      <PlusSmallIcon className="h-4 w-4" aria-hidden="true" />
                     )}
                   </span>
                 </Disclosure.Button>
