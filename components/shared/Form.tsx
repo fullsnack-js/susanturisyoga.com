@@ -26,18 +26,10 @@ export default function ContactForm() {
   const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data)
 
   return (
-    <div className="isolate bg-white py-24 px-6 sm:py-32 lg:px-8">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Contact sales
-        </h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">
-          Aute magna irure deserunt veniam aliqua magna enim voluptate.
-        </p>
-      </div>
+    <div className="drop-shadow border-solid border-2 rounded-md border-gray-400 isolate bg-white py-24 px-6 sm:py-32 lg:px-8 mt-6">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
+        className="mx-auto -mt-6 max-w-xl rounded sm:-mt-20"
       >
         <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
           <div>
@@ -56,7 +48,7 @@ export default function ContactForm() {
                 {...register('firstName')}
               />
               {errors.firstName && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.firstName?.message}
                 </p>
@@ -79,7 +71,7 @@ export default function ContactForm() {
                 {...register('lastName')}
               />
               {errors.lastName && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.lastName?.message}
                 </p>
@@ -103,7 +95,7 @@ export default function ContactForm() {
                 {...register('email')}
               />
               {errors.email && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.email?.message}
                 </p>
@@ -127,7 +119,7 @@ export default function ContactForm() {
                 {...register('messageBody')}
               />
               {errors.messageBody && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.messageBody?.message}
                 </p>
@@ -140,10 +132,19 @@ export default function ContactForm() {
             type="submit"
             className="block w-full rounded-md bg-blue-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
-            Let's talk
+            Let&apos;s talk
           </button>
         </div>
       </form>
+      <div className="mx-auto max-w-2xl text-center">
+        {/* <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Contact sales
+        </h2> */}
+        <p className="mt-6 text-lg leading-8 text-gray-600">
+          Thank you for considering me as your yoga instructor. I look forward
+          to hearing from you soon!
+        </p>
+      </div>
     </div>
   )
 }
