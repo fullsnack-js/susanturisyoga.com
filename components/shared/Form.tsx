@@ -27,17 +27,9 @@ export default function ContactForm() {
 
   return (
     <div className="isolate bg-white py-24 px-6 sm:py-32 lg:px-8">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Contact sales
-        </h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">
-          Aute magna irure deserunt veniam aliqua magna enim voluptate.
-        </p>
-      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
+        className="mx-auto -mt-6 max-w-xl rounded border-gray-300 sm:-mt-12 sm:mt-20"
       >
         <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
           <div>
@@ -56,7 +48,7 @@ export default function ContactForm() {
                 {...register('firstName')}
               />
               {errors.firstName && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.firstName?.message}
                 </p>
@@ -79,7 +71,7 @@ export default function ContactForm() {
                 {...register('lastName')}
               />
               {errors.lastName && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.lastName?.message}
                 </p>
@@ -103,7 +95,7 @@ export default function ContactForm() {
                 {...register('email')}
               />
               {errors.email && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.email?.message}
                 </p>
@@ -127,7 +119,7 @@ export default function ContactForm() {
                 {...register('messageBody')}
               />
               {errors.messageBody && (
-                <p className="text-xs italic text-red-500 mt-2">
+                <p className="mt-2 text-xs italic text-red-500">
                   {' '}
                   {errors.messageBody?.message}
                 </p>
@@ -144,6 +136,15 @@ export default function ContactForm() {
           </button>
         </div>
       </form>
+      <div className="mx-auto max-w-2xl text-center">
+        {/* <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Contact sales
+        </h2> */}
+        <p className="mt-6 text-lg leading-8 text-gray-600">
+          Thank you for considering me as your yoga instructor. I look forward
+          to hearing from you soon!
+        </p>
+      </div>
     </div>
   )
 }
