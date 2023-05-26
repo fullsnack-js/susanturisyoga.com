@@ -1,5 +1,6 @@
 import { Footer } from 'components/global/Footer'
 import { N,Navbar } from 'components/global/Navbar'
+import Nav from 'components/global/Nav'
 import Sidebar from 'components/global/Sidebar'
 import { PreviewBanner } from 'components/preview/PreviewBanner'
 import { motion } from 'framer-motion'
@@ -31,7 +32,8 @@ export default function Layout({
   return (
     <div className="flex min-h-screen max-w-7xl flex-col bg-white text-black">
       {preview && <PreviewBanner />}
-      <Navbar menuItems={settings?.menuItems} />
+      {/* <Navbar menuItems={settings?.menuItems} /> */}
+      <Nav/>
       <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32"> 
     {children}</div>
       {home && <Newsletter />}
