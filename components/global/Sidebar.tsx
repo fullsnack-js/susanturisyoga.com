@@ -8,49 +8,40 @@ const links = [
   { name: "Contact", to: "#", id: 4 }
 ];
 
-export default function Sidebar({ sideBar = false, setSideBar = () => {} }) {
+export default function Sidebar() {
   return (
-    <AnimatePresence>
-      {sideBar && (
-        <>
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{
-              x: 0
-            }}
-            exit={{
-              x: "100%"
-            }}
-            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed bg-indigo-600 text-white shadow-lg top-0 right-0 w-full max-w-sm h-screen p-5"
-          >
-            <button
-              onClick={() => setSideBar((sideBar) => !sideBar)}
-              className="bg-white text-black h-8 w-8 block mb-2 rounded-full"
-            >
-              &times;
-            </button>
-            <h2 className="text-4xl capitalize leading-loose">hello!</h2>
-            <p className="leading-relaxed">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1
-            }}
-            exit={{
-              opacity: 0
-            }}
-            transition={{ type: "spring", bounce: 0, duration: 0.2 }}
-            onClick={() => setSideBar((sideBar) => !sideBar)}
-            className="bg-transparent px-5 fixed h-full w-full flex items-center justify-center top-0 left-0"
-          />
-        </>
+    <>
+      {showSidebar ? (
+        <button
+          className="flex text-4xl text-white items-center cursor-pointer fixed right-10 top-6 z-50"
+          onClick={() => setShowSidebar(!showSidebar)}
+        >
+          x
+        </button>
+      ) : (
+        <svg
+          onClick={() => setShowSidebar(!showSidebar)}
+          className="fixed  z-30 flex items-center cursor-pointer right-10 top-6"
+          fill="#2563EB"
+          viewBox="0 0 100 80"
+          width="40"
+          height="40"
+        >
+          <rect width="100" height="10"></rect>
+          <rect y="30" width="100" height="10"></rect>
+          <rect y="60" width="100" height="10"></rect>
+        </svg>
       )}
-    </AnimatePresence>
+
+      <div
+        className={`top-0 right-0 w-[35vw] bg-blue-600  p-10 pl-20 text-white fixed h-full z-40  ease-in-out duration-300 ${
+          showSidebar ? "translate-x-0 " : "translate-x-full"
+        }`}
+      >
+        <h3 className="mt-20 text-4xl font-semibold text-white">
+          I am a sidebar
+        </h3>
+      </div>
+    </>
   );
 }

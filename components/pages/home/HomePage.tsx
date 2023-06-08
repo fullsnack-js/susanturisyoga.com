@@ -39,7 +39,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       <Layout home settings={settings} preview={preview}>
         <div className="-mt-20 mx-auto w-full space-y-8">
           {/* Header */}
-          <div className="w-full container  flex flex-col sm:flex-row items-center pb-4 sm:flex-row  sm:justify-between sm:space-x-4 sm:pb-4 md:mb-12 md:h-[75vh] md:px-10 md:pb-8 lg:px-12 lg:pb-10 xl:px-14">
+          <div className="w-full container  flex flex-col sm:flex-row items-center pb-4 sm:flex-row  sm:justify-between sm:space-x-4 sm:pb-4 md:mb-12 h-[90vh] md:px-10 md:pb-8 lg:px-12 lg:pb-10 xl:px-14">
             {pageHero && (
               <div className="w-full sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
                 <Image
@@ -57,13 +57,13 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 />
               </div>
             )}
-            <div className="absolute bottom-0 w-full bg-indigo-200/75 px-4 sm:relative sm:w-1/2 sm:bg-inherit md:h-3/5">
+            <div className="w-full bg-indigo-200/50 p-2 sm:relative sm:w-1/2 sm:bg-inherit md:h-3/5">
               <div className="text-3xl font-extrabold tracking-tight md:text-4xl">
                 {title}
               </div>
 
               {overview && (
-                <div className="text-md mt-4 font-serif text-gray-600 md:text-lg ">
+                <div className="text-md px-4 mt-4 font-serif text-gray-600 md:text-lg ">
                   <CustomPortableText value={overview} />
                 </div>
               )}
