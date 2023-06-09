@@ -49,7 +49,7 @@ return (
    
      <div className="justify-end items-center p-0 mr-4 md:mr-0 sm:py-2"> 
          <button className="inline-flex justify-end items-center rounded-md bg-amber-500 hover:bg-amber-400 border-0 p-2 mr-6 text-white">
-           Click Me &rarr;
+           Take a Class &rarr;
          </button>
        </div>
        
@@ -81,10 +81,10 @@ return (
           Susan Turis Yoga
         </h3>
         <ul>
-        <div className="text-sm flex flex-col">
+        <div className="text-sm flex flex-col w-[8em] sm:w-[10em] mr-0a">
          {/* <a href="#" className="mt-4 inline-block lg:mt-0 text-white-200 mr-4"> */}
          {menuItems &&
-        menuItems.map((menuItem, key) => {
+        menuItems.filter(menuItem => menuItem?.title != 'contact').map((menuItem, key) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug)
           if (!href) {
             return null
@@ -95,11 +95,14 @@ return (
               className={`text-sm sm:text-lg mt-4 hover:text-gray-300 mr-4 text-gray-600 md:text-xl`}
               href={href}
             >
-              {menuItem._type == 'home' ? 'Home' : menuItem.title}{' '}
-     
+            {menuItem._type == 'home' ? 'Home' : menuItem.title}{' '}
             </Link>
           )
         })}
+        <Link href={'/'}>
+        <button className="inline-flex justify-end items-center rounded-md bg-amber-500 hover:bg-amber-400 border-0 p-2 mr-6 text-white">
+           Take a Class &rarr;
+         </button></Link>
          {/* </a> */}
         
        </div>
