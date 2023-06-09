@@ -5,9 +5,9 @@ import { FAQContent } from 'types'
 import { CustomPortableText } from './CustomPortableText'
 export const FAQ = ({ title, questions: faqs }: FAQContent) => {
   return (
-    <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
+    <dl className="mt-10 space-y-4 divide-y divide-gray-900/10">
       {faqs.map((faq) => (
-        <Disclosure as="div" key={faq.question} className="pt-6">
+        <Disclosure as="div" key={faq.question} className="pt-4">
           {({ open }) => (
             <>
               <dt>

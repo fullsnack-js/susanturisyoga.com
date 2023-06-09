@@ -3,6 +3,7 @@ import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import { PortableTextBlock } from 'sanity'
 import { MenuItem } from 'types'
+import TrademarkLogo from '../shared/TrademarkLogo'
 interface FooterProps {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
@@ -32,7 +33,7 @@ export function Footer({ footer, menuItems }: FooterProps) {
               )
             })}
         </nav>
-
+<div className="flex items-center"><TrademarkLogo/></div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} Susan Turis Yoga. All rights
           reserved.
