@@ -1,6 +1,18 @@
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
+const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
+
+
+// Obtain a Date instance that will render the equivalent Berlin time for the UTC date
+const date = new Date()
+const timeZone = 'America/New_York'
+const zonedDate = utcToZonedTime(date, timeZone)
+// zonedDate could be used to initialize a date picker or display the formatted local date/time
+
+// Set the output to "1.9.2018 18:01:36.386 GMT+02:00 (CEST)"
+const pattern = 'HH:mm:ss'
+const output = format(zonedDate, pattern, { timeZone })
 const Schedule = () => {
   return (
     <FullCalendar
@@ -17,6 +29,10 @@ const Schedule = () => {
         },
       ]}
       initialView="timeGridWeek"
+      slotMinTime={"07:00:00"}
+      slotMaxTime={"21:00:00"}
+      nowIndicator={true}
+      scrollToTime={output}
     />
   )
 }
