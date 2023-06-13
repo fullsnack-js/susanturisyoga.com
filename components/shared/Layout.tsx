@@ -8,7 +8,8 @@ import IntroTemplate from 'intro-template'
 import { useState } from 'react'
 import { SettingsPayload } from 'types'
 
-import Newsletter from './Newsletter'
+import Newsletter from './NewsletterTile'
+import Subscribe from "components/shared/Form/Newsletter"
 
 const fallbackSettings: SettingsPayload = {
   menuItems: [],
@@ -36,7 +37,9 @@ export default function Layout({
       <Nav menuItems={settings?.menuItems}/>
       <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32"> 
     {children}</div>
-      {home && <Newsletter />}
+      {home && (<><Subscribe/>
+      <Newsletter /></>)
+      }
       <Footer menuItems={settings?.menuItems} footer={settings?.footer} />
     </div>
   )

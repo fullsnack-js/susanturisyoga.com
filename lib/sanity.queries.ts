@@ -30,6 +30,16 @@ export const homePageQuery = groq`
   }
 `
 
+export const classesQuery =  groq`
+*[_type=="class"]|order(level asc){
+  description,
+  title,
+  _type,
+  _id,
+  level
+}
+`
+
 export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
 `

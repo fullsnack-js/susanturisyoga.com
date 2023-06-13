@@ -89,6 +89,13 @@ export interface ShowcaseProject {
   title?: string
 }
 
+export interface IyengarClass {
+  description: string
+  title: string
+  _id: string
+  level: string
+}
+
 // Page payloads
 
 export interface HomePagePayload {
@@ -138,3 +145,15 @@ export interface SettingsPayload {
   contactEmail: string
   ogImage?: Image
 }
+
+export enum Form {
+  Initial,
+  Loading,
+  Success,
+  Error
+}
+
+export type FormState = {
+  state: Form;
+  message?: string;
+};
