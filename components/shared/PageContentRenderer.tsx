@@ -7,6 +7,7 @@ import { urlFor } from 'schemas/utils/urlFor'
 import type { PageContent } from 'types'
 
 import Schedule from './Calendar'
+import Classes from './Classes'
 
 export function PageContentRenderer(content: PageContent) {
   console.log(content)
@@ -41,7 +42,9 @@ export function PageContentRenderer(content: PageContent) {
         />
       )
     case 'scheduleSection':
-      return <Schedule />
+      // return <Schedule />
+      // case 'class':
+        return <Classes {...content[0].classes}/>
     default:
       return JSON.stringify(content[0], null, 2)
       break

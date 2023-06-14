@@ -9,7 +9,7 @@ export type PageContent =
   | ImageWithText
   | Figure
   | PortableTextBlock[]
-  | FAQContent
+  | FAQContent | IyengarClass[]
 
 export interface SEO {
   title: string
@@ -94,6 +94,10 @@ export interface IyengarClass {
   title: string
   _id: string
   level: string
+  classResources?:{
+    title: string
+    url:string
+  }
 }
 
 // Page payloads

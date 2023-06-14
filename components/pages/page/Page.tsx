@@ -4,11 +4,12 @@ import ImageBox from 'components/shared/ImageBox'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
+import { useRef, useState } from 'react'
 import type { PagePayload, SettingsPayload } from 'types'
-import {BeatLoader} from "react-spinners"
+
+// import {BeatLoader} from "react-spinners"
 import { PageContentRenderer } from '../../shared/PageContentRenderer'
 import PageHead from './PageHead'
-import { useRef, useState } from 'react'
 
 export interface PageProps {
   page: PagePayload | undefined
@@ -137,14 +138,8 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
                 // disabled={isSubscribed || isLoading}
                 className="flex w-full items-center justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-               {Form.Loading ? (
-            <BeatLoader
-            color="#36d7b7"
-            size={5}
-          />
-          ) : (
-            "Subscribe"
-          )}
+              
+            Subscribe
               </button>
             </div>
           </form>

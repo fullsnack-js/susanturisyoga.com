@@ -1,6 +1,23 @@
 import { defineField, defineType } from 'sanity'
 
 import { getIcon } from '../utils/get-icon'
+
+const yogaResources = defineType({
+  title: 'External Resources',
+  name: 'classResources',
+  type: 'object',
+  fields: [defineField({
+  title: 'Title',
+  name: 'title',
+  type: 'string'}),
+// URL
+defineField({
+  name: 'url',
+  title: 'URL',
+  type: 'url',
+  validation: (Rule) => Rule.uri({scheme: ['http', 'https']}),
+})]})
+
 export const yogaClass = defineType({
   name: 'class',
   title: 'Class',
@@ -65,5 +82,20 @@ export const yogaClass = defineType({
       name: 'eventCalendar',
       type: 'eventCalendar',
     }),
+    {
+      title: 'External Resources',
+      name: 'classResources',
+      type: 'object',
+      fields: [defineField({
+      title: 'Title',
+      name: 'title',
+      type: 'string'}),
+    // URL
+    defineField({
+      name: 'url',
+      title: 'URL',
+      type: 'url',
+      validation: (Rule) => Rule.uri({scheme: ['http', 'https']}),
+    })]}
   ],
 })
