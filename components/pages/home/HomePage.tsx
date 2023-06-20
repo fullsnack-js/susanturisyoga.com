@@ -37,11 +37,11 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       </Head>
 
       <Layout home settings={settings} preview={preview}>
-        <div className="-mt-20 mx-auto w-full space-y-8">
+        <div className="-mt-20 mx-auto w-full space-y-6">
           {/* Header */}
-          <div className="w-full container  flex flex-col sm:flex-row items-center pb-4 sm:flex-row  sm:justify-between sm:space-x-4 sm:pb-4 md:mb-12 h-[90vh] md:px-10 md:pb-8 lg:px-12 lg:pb-10 xl:px-14">
+          <div className="w-full container  flex flex-col sm:flex-row items-center pb-4 sm:justify-center sm:space-x-4 sm:pb-4 md:mb-6 h-[90vh] md:px-10 md:pb-8 lg:px-12 lg:pb-10 xl:px-14">
             {pageHero && (
-              <div className="w-full sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
+              <div className="w-full justify-center sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
                 <Image
                   {...imageProps}
                   alt={pageHero.alt}

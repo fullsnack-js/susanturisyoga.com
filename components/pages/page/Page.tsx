@@ -10,6 +10,7 @@ import type { PagePayload, SettingsPayload } from 'types'
 // import {BeatLoader} from "react-spinners"
 import { PageContentRenderer } from '../../shared/PageContentRenderer'
 import PageHead from './PageHead'
+import SanityImage from 'components/shared/SanityImage'
 
 export interface PageProps {
   page: PagePayload | undefined
@@ -84,17 +85,19 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <div>
-          <div className="mb-14">
-            {/* {coverImage && (
-              <ImageBox
-                image={coverImage.image}
+        <div className='mt-4'>
+          <div className="mb-14 px-4 md:px-6">
+            {coverImage && (
+              <div className="flex items-center justify-center">
+              <SanityImage
+                asset={coverImage.image.asset}
                 alt={coverImage.alt || 'Timeline item icon'}
-                size="10vw"
-                width={65}
-                height={65}
+                className={`rounded-md shadow w-full md:w-1/2 h-96 object-cover`}
+                width={500}
+                // height={350}
               />
-            )} */}
+              </div>
+            )}
             {/* Header */}
             <Header centered title={title} subtitle={subtitle} />
             {page.slug == 'schedule' && <Schedule />}

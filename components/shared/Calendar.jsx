@@ -28,6 +28,7 @@ const Schedule = () => {
             '2er5kvd9gni0sbgd11k53fbs4s@group.calendar.google.com',
         },
       ]}
+      
       initialView="timeGridWeek"
       slotMinTime={"07:00:00"}
       slotMaxTime={"21:00:00"}

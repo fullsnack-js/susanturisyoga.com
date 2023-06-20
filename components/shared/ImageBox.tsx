@@ -15,7 +15,7 @@ export default function ImageBox({
   alt = 'Cover image',
   width = 350,
   height = 200,
-  size = '50vw',
+  // size = '50vw',
   classesWrapper,
 }: ImageBoxProps) {
   const imageUrl =
@@ -25,11 +25,12 @@ export default function ImageBox({
     <div className={`w-full rounded-[3px] bg-gray-50 ${classesWrapper}`}>
       {imageUrl && (
         <Image
-          className="absolute h-full w-full"
+          // className="absolute h-1/2 w-1/2"
           alt={alt}
           width={width}
           height={height}
-          sizes={size}
+          // sizes={size}
+          // fill={true}
           src={imageUrl}
         />
       )}

@@ -8,6 +8,7 @@ import type { PageContent } from 'types'
 
 import Schedule from './Calendar'
 import Classes from './Classes'
+import { IyengarClasses } from 'lib/local.data'
 
 export function PageContentRenderer(content: PageContent) {
   console.log(content)
@@ -44,7 +45,7 @@ export function PageContentRenderer(content: PageContent) {
     case 'scheduleSection':
       // return <Schedule />
       // case 'class':
-        return <Classes {...content[0].classes}/>
+        return <Classes classes={IyengarClasses}/>
     default:
       return JSON.stringify(content[0], null, 2)
       break
