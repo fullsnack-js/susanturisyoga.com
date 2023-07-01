@@ -1,5 +1,4 @@
 import { ProjectListItem } from 'components/pages/home/ProjectListItem'
-import Schedule from 'components/shared/Calendar'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import HookForm from 'components/shared/Form'
 import { Header } from 'components/shared/Header'
@@ -7,6 +6,7 @@ import ImageBox from 'components/shared/ImageBox'
 import Layout from 'components/shared/Layout'
 import Newsletter from 'components/shared/NewsletterTile'
 import { PageContentRenderer } from 'components/shared/PageContentRenderer'
+import Schedule from 'components/shared/Schedule'
 import ScrollUp from 'components/shared/ScrollUp'
 import { configuredSanityClient } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
@@ -71,14 +71,14 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 <button
                   type="submit"
                   className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
-                  Take A Class &rarr;
+                ><Link href="/schedule">
+                  Take A Class &rarr;</Link>
                 </button>
                 <button
                   type="submit"
                   className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                 >
-                  Contact
+                 <Link href="/contact">Contact</Link> 
                 </button>
               </div>
             </div>

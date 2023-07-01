@@ -1,7 +1,8 @@
-import Schedule from 'components/shared/Calendar'
 import { Header } from 'components/shared/Header'
 import ImageBox from 'components/shared/ImageBox'
 import Layout from 'components/shared/Layout'
+import SanityImage from 'components/shared/SanityImage'
+import Schedule from 'components/shared/Schedule'
 import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
 import { useRef, useState } from 'react'
@@ -10,7 +11,6 @@ import type { PagePayload, SettingsPayload } from 'types'
 // import {BeatLoader} from "react-spinners"
 import { PageContentRenderer } from '../../shared/PageContentRenderer'
 import PageHead from './PageHead'
-import SanityImage from 'components/shared/SanityImage'
 
 export interface PageProps {
   page: PagePayload | undefined

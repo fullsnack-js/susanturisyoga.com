@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { urlFor } from 'schemas/utils/urlFor'
 import type { PageContent } from 'types'
 
-import Schedule from './Calendar'
+import Schedule from './Schedule'
 import Classes from './Classes'
 import { IyengarClasses } from 'lib/local.data'
 

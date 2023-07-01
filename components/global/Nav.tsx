@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import {Logo} from "../shared/Logo" 
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
+import React, { useState } from 'react';
 import { MenuItem } from 'types'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+import {Logo} from "../shared/Logo" 
 
 interface NavbarProps {
   menuItems?: MenuItem[]
@@ -15,7 +16,8 @@ return (
   <>
     <nav className="flex items-center justify-between flex-wrap p-4 sm:sticky top-0 z-10 bg-white/80 backdrop-blur ">
      <div className="flex items-center flex-shrink-0 text-white mr-2 sm:mr-6 lg:mr-72">
-       <Logo />
+      <Link href="/">
+       <Logo /></Link>
      </div>
     
      <div
@@ -39,9 +41,7 @@ return (
             </Link>
           )
         })}
-         {/* <a href="#" className="mt-4 inline-block lg:mt-0 text-white-200 mr-4">
-           First Link
-         </a> */}
+     
          
        </div>
      
@@ -49,7 +49,7 @@ return (
    
      <div className="justify-end items-center p-0 mr-4 md:mr-0 sm:py-2"> 
          <button className="inline-flex justify-end items-center rounded-md bg-amber-500 hover:bg-amber-400 border-0 p-2 mr-6 text-white">
-           Take a Class &rarr;
+           <Link href="/schedule">Take a Class &rarr;</Link>
          </button>
        </div>
        
@@ -99,10 +99,11 @@ return (
             </Link>
           )
         })}
-        <Link href={'/'}>
+        
+        
         <button className="inline-flex justify-end items-center rounded-md bg-amber-500 hover:bg-amber-400 border-0 p-2 mr-6 text-white">
-           Take a Class &rarr;
-         </button></Link>
+           <Link href='/schedule'>Take a Class &rarr;</Link>
+         </button>
          {/* </a> */}
         
        </div>
