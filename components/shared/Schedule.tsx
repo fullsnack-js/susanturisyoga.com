@@ -85,7 +85,7 @@ function ClassSlot(yogaClass: YogaClass) {
   const { id, title, time, kind, registrationLink } = yogaClass;
   // const { openModal, setOpenModal } = React.useContext(GlobalContext);
   return (
-    <td id={id}>
+    <td className='border border-slate-300' id={id}>
       <span className="text-blue-500 font-bold">{time}</span>
       <br />
       <span className="text-black">{title}</span>
@@ -115,7 +115,7 @@ function ClassSlot(yogaClass: YogaClass) {
 const MobileSchedule = () => (
   <div className="w-full flex flex-col items-center justify-center space-y-4 bg-white p-6 sm:hidden">
     {yogaClasses.map((yogaClass, idx) => (
-      <div key={yogaClass.id} className="rounded-sm bg-gray-200 p-4">
+      <div key={yogaClass.id} className="rounded-md bg-gray-200/[.7] p-4">
         <h4 className="font-bold text-green-400">
           {yogaClass.day.toUpperCase()}
         </h4>
@@ -132,7 +132,7 @@ const MobileSchedule = () => (
                 {"Signup @ IYAGNY"}
               </a>
             ) : (
-              <a href={"/contact"}>{"Sign Up"}</a>
+              <a href={"mailto:susantyoga@gmail.com?subject=Class%20Signup"} target={"_blank"}>{"Sign Up"}</a>
             )}
           </span>
         </div>
@@ -150,61 +150,61 @@ export default function Schedule() {
       {/* </div> */}
 
       <div className="hidden sm:flex sm:w-full">
-        <table className="sm:w-full sm:table-auto">
+        <table className="sm:w-full sm:table-auto border border-slate-400">
           <thead>
             <tr>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
-              <th>Saturday</th>
+              <th className='border border-slate-300'>Monday</th>
+              <th className='border border-slate-300'>Tuesday</th>
+              <th className='border border-slate-300'>Wednesday</th>
+              <th className='border border-slate-300'>Thursday</th>
+              <th className='border border-slate-300'>Friday</th>
+              <th className='border border-slate-300'>Saturday</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
               <ClassSlot {...yogaClasses[1]} />
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
             </tr>
             <tr>
               <ClassSlot {...yogaClasses[0]} />
-              <td></td>
+              <td className='border border-slate-300'></td>
               <ClassSlot {...yogaClasses[2]} />
-              <td></td>
-              <td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'>
                 <br />
               </td>
-              <td></td>
+              <td className='border border-slate-300'></td>
             </tr>
             <tr>
-              <td></td>
+              <td className='border border-slate-300'></td>
               <ClassSlot {...yogaClasses[6]} />
-              <td>
+              <td className='border border-slate-300'>
                 <br />
               </td>
               <ClassSlot {...yogaClasses[4]} />
-              <td></td>
+              <td className='border border-slate-300'></td>
               <ClassSlot {...yogaClasses[6]} />
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
               <ClassSlot {...yogaClasses[5]} />
-              <td></td>
+              <td className='border border-slate-300'></td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
               <ClassSlot {...yogaClasses[3]} />
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
+              <td className='border border-slate-300'></td>
             </tr>
           </tbody>
         </table>

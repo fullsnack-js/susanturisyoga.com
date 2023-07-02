@@ -41,7 +41,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
           {/* Header */}
           <div className="w-full container  flex flex-col sm:flex-row items-center pb-4 sm:justify-center sm:space-x-4 sm:pb-4 md:mb-6 h-[90vh] md:px-10 md:pb-8 lg:px-12 lg:pb-10 xl:px-14">
             {pageHero && (
-              <div className="w-full justify-center sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
+              <div className="w-full -z-5s0 justify-center sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
                 <Image
                   {...imageProps}
                   alt={pageHero.alt}
@@ -57,26 +57,27 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 />
               </div>
             )}
-            <div className="w-full bg-indigo-200/50 p-2 sm:relative sm:w-1/2 sm:bg-inherit md:h-3/5">
-              <div className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            <div className="w-full bg-sky-200/[.9] -mt-8 sm:mt-0 z-[999] p-2 sm:relative sm:w-1/2 sm:bg-inherit md:h-3/5">
+              <div className="text-3xl sm:-mt-6 
+              md:-mt-4 lg:mt-0 font-extrabold tracking-tight md:text-4xl">
                 {title}
               </div>
 
               {overview && (
-                <div className="text-md px-4 mt-4 font-serif text-gray-600 md:text-lg ">
+                <div className="text-sm px-4 mt-4 font-sans text-gray-700 lg:text-lg ">
                   <CustomPortableText value={overview} />
                 </div>
               )}
               <div className="flex max-w-md gap-x-4 p-4">
                 <button
                   type="submit"
-                  className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  className="flex-none rounded-md bg-yellow-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500"
                 ><Link href="/schedule">
                   Take A Class &rarr;</Link>
                 </button>
                 <button
                   type="submit"
-                  className="flex-none rounded-md bg-cyan-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  className="flex-none rounded-md bg-yellow-500 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-50"
                 >
                  <Link href="/contact">Contact</Link> 
                 </button>

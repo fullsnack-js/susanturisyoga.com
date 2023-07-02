@@ -73,7 +73,7 @@ return (
                   )}
                 </button>
           <div
-        className={`top-0 right-0 w-[50vw] bg-blue-600  p-10 pl-20 text-white fixed h-full z-40  ease-in-out duration-300 ${
+        className={`top-0 right-0 w-[50vw] bg-sky-300/[0.97] p-10 pl-20 text-white fixed h-full z-40  ease-in-out duration-300 ${
           showSidebar ? "translate-x-0 " : "translate-x-full"
         }`}
       >
