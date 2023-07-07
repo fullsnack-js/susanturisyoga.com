@@ -1,7 +1,7 @@
 import CTA from 'components/shared/CTA'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { FAQ } from 'components/shared/FAQs'
-import ContactForm from 'components/shared/Form'
+import ContactForm from 'components/shared/Form/Contact'
 import Image from 'next/image'
 import { urlFor } from 'schemas/utils/urlFor'
 import type { PageContent } from 'types'
