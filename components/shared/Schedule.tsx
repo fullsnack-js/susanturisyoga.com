@@ -8,7 +8,7 @@ export interface YogaClass {
   day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday";
   title: string;
   time: string;
-  kind: "HYBRID" | "ONLINE";
+  kind: "IN-PERSON" | "ONLINE";
   registrationLink?: string;
 }
 
@@ -27,7 +27,7 @@ const yogaClasses: YogaClass[] = [
     day: "Wednesday",
     time: "8:15-9:45",
     title: "General/ Level 2",
-    kind: "HYBRID",
+    kind: "IN-PERSON",
     registrationLink:
       "https://iyengarnyc.org/association-institutes/online-classes/"
   },
@@ -36,7 +36,7 @@ const yogaClasses: YogaClass[] = [
     day: "Wednesday",
     time: "10:15-11:45",
     title: "General/ Level 1",
-    kind: "HYBRID",
+    kind: "IN-PERSON",
     registrationLink:
       "https://iyengarnyc.org/association-institutes/online-classes/"
   },
@@ -63,19 +63,13 @@ const yogaClasses: YogaClass[] = [
     registrationLink:
       "https://iyengarnyc.org/association-institutes/online-classes/"
   },
-  {
-    id: "sa-1130-online-susan-general",
-    day: "Saturday",
-    time: "11:30-1",
-    title: "General",
-    kind: "ONLINE"
-  },
+  
   {
     id: "sa-1415-hybrid-iyanyc-level1",
     day: "Saturday",
     time: "2:15-3:45",
     title: "General/ Level 1",
-    kind: "HYBRID",
+    kind: "IN-PERSON",
     registrationLink:
       "https://iyengarnyc.org/association-institutes/online-classes/"
   }
