@@ -75,18 +75,7 @@ export default function Subscribe() {
       ) : form.state === Form.Success ? (
         <SuccessMessage>{form.message}</SuccessMessage>
       ) : (
-        <p className="text-sm text-center	text-gray-800 dark:text-gray-200">
-          {`${
-            subscriberCount ? subscriberCount.toLocaleString() : '-'
-          } subscribers – `}
-          <a
-            href="https://github.com/sayandey18/sayandey.dev/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View all GitHub issues
-          </a>
-        </p>
+        ""
       )}
     </div>
   );

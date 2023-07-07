@@ -12,6 +12,14 @@ export interface YogaClass {
   registrationLink?: string;
 }
 
+const Mailto = ({ email, subject = '', body = '', children }) => {
+  let params = subject || body ? '?' : '';
+  if (subject) params += `subject=${encodeURIComponent(subject)}`;
+  if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
+
+  return <a href={`mailto:${email}${params}`} target="_blank">{children}</a>;
+};
+
 const yogaClasses: YogaClass[] = [
   {
     id: "m-10-online-iyagny-level2",
@@ -92,7 +100,7 @@ function ClassSlot(yogaClass: YogaClass) {
             {"Signup @ IYAGNY"}
           </a>
         ) : (
-          <button>{"Sign Up"}</button>
+          <button>  <Mailto email="iyengarsusan@gmail.com" subject={`${yogaClass.day}-${yogaClass.time}`} body="Specify the date of the class to attend">Sign up</Mailto></button>
         )}
       </span>
       {/* {openModal && (
@@ -126,7 +134,7 @@ const MobileSchedule = () => (
                 {"Signup @ IYAGNY"}
               </a>
             ) : (
-              <a href={"mailto:susantyoga@gmail.com?subject=Class%20Signup"} target={"_blank"}>{"Sign Up"}</a>
+              <Mailto email="iyengarsusan@gmail.com" subject={`${yogaClass.day}-${yogaClass.time}`} body="Specify the date of the class to attend">Sign up</Mailto>
             )}
           </span>
         </div>
