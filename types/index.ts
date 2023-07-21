@@ -9,7 +9,7 @@ export type PageContent =
   | ImageWithText
   | Figure
   | PortableTextBlock[]
-  | FAQContent | IyengarClass[]
+  | FAQContent 
 
 export interface SEO {
   title: string
@@ -138,6 +138,7 @@ export interface PagePayload {
   coverImage?: Figure
   pageContent?: PageContent
   title?: string
+  classes?: YogaClass[]
   subtitle?: PortableTextBlock[]
   slug?: string
 }

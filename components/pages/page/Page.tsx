@@ -6,17 +6,19 @@ import Schedule from 'components/shared/Schedule'
 import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
 import { useRef, useState } from 'react'
-import type { PagePayload, SettingsPayload } from 'types'
+import type { PagePayload, SettingsPayload, YogaClass } from 'types'
 
 // import {BeatLoader} from "react-spinners"
 import { PageContentRenderer } from '../../shared/PageContentRenderer'
 import PageHead from './PageHead'
+import WeekSchedule from 'components/shared/Schedule'
 
 export interface PageProps {
   page: PagePayload | undefined
   settings: SettingsPayload | undefined
   homePageTitle: string | undefined
   preview?: boolean
+  classes: YogaClass[]
 }
 
 export enum Form {
@@ -69,7 +71,7 @@ export function useSubscribeToNewsletter() {
   }
  
 
-export function Page({ page, settings, homePageTitle, preview }: PageProps) {
+export function Page({ page, settings, homePageTitle, preview, classes }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { pageContent, coverImage, subtitle, title } = page || {}
   // Declare state variables for email, message, status, isLoading, and isSubscribed.
@@ -100,7 +102,7 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
             )}
             {/* Header */}
             <Header centered title={title} subtitle={subtitle} />
-            {page.slug == 'schedule' && <Schedule />}
+            {page.slug == 'schedule' &&   <WeekSchedule classes={classes}/>}
             {/* Body */}
             {pageContent && PageContentRenderer(pageContent)}
 

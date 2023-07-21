@@ -6,11 +6,12 @@ import {
   getPageBySlug,
   getPagePaths,
   getSettings,
+  getClasses
 } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { PagePayload, SettingsPayload } from 'types'
+import { PagePayload, SettingsPayload, YogaClass } from 'types'
 
 const PagePreview = lazy(() => import('components/pages/page/PagePreview'))
 
@@ -18,6 +19,7 @@ interface PageProps {
   page?: PagePayload
   settings?: SettingsPayload
   homePageTitle?: string
+  classes: YogaClass[]
   preview: boolean
   token: string | null
 }
@@ -31,7 +33,7 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { homePageTitle, settings, page, preview, token } = props
+  const { homePageTitle, classes,settings, page, preview, token } = props
 
   if (preview) {
     return (
@@ -41,6 +43,7 @@ export default function ProjectSlugRoute(props: PageProps) {
             <Page
               homePageTitle={homePageTitle}
               page={page}
+              classes={classes}
               settings={settings}
               preview={preview}
             />
@@ -61,6 +64,7 @@ export default function ProjectSlugRoute(props: PageProps) {
     <Page
       homePageTitle={homePageTitle}
       page={page}
+      classes={classes}
       settings={settings}
       preview={preview}
     />
@@ -76,10 +80,11 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, page, homePageTitle] = await Promise.all([
+  const [settings, page, homePageTitle, classes] = await Promise.all([
     getSettings({ token }),
     getPageBySlug({ token, slug: params.slug }),
     getHomePageTitle({ token }),
+    getClasses({token})
   ])
 
   if (!page) {
@@ -92,6 +97,7 @@ export const getStaticProps: GetStaticProps<
     props: {
       page,
       settings,
+      classes,
       homePageTitle,
       preview,
       token: previewData.token ?? null,
