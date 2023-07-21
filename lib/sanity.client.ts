@@ -2,6 +2,7 @@ import { SanityImageSource } from '@sanity/asset-utils'
 import { createClient as crxClient } from '@sanity/client'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
+  classesQuery,
   homePageQuery,
   homePageTitleQuery,
   pagePaths,
@@ -47,6 +48,14 @@ export async function getHomePageTitle({
   token?: string
 }): Promise<string | undefined> {
   return await sanityClient(token)?.fetch(homePageTitleQuery)
+}
+
+export async function getClasses({
+  token,
+}: {
+  token?: string
+}): Promise<string | undefined> {
+  return await sanityClient(token)?.fetch(classesQuery)
 }
 
 export async function getPageBySlug({

@@ -1,10 +1,10 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
 import { HomePage } from 'components/pages/home/HomePage'
 import { PreviewWrapper } from 'components/preview/PreviewWrapper'
-import { getHomePage, getSettings } from 'lib/sanity.client'
+import { getHomePage, getSettings,getClasses } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { HomePagePayload, SettingsPayload } from 'types'
+import { HomePagePayload, SettingsPayload, YogaClass} from 'types'
 
 const HomePagePreview = lazy(
   () => import('components/pages/home/HomePagePreview')
@@ -13,6 +13,7 @@ const HomePagePreview = lazy(
 interface PageProps {
   page: HomePagePayload
   settings: SettingsPayload
+  classes: YogaClass[]
   preview: boolean
   token: string | null
 }
@@ -26,14 +27,14 @@ interface PreviewData {
 }
 
 export default function IndexPage(props: PageProps) {
-  const { page, settings, preview, token } = props
+  const { page, settings, classes, preview, token } = props
 
   if (preview) {
     return (
       <PreviewSuspense
         fallback={
           <PreviewWrapper>
-            <HomePage page={page} settings={settings} preview={preview} />
+            <HomePage page={page} classes={classes} settings={settings} preview={preview} />
           </PreviewWrapper>
         }
       >
@@ -42,7 +43,7 @@ export default function IndexPage(props: PageProps) {
     )
   }
 
-  return <HomePage page={page} settings={settings} />
+  return <HomePage page={page}  classes={classes} settings={settings} />
 }
 
 const fallbackPage: HomePagePayload = {
@@ -59,15 +60,17 @@ export const getStaticProps: GetStaticProps<
   const { preview = false, previewData = {} } = ctx
 
   const token = previewData.token
-  const [settings, page = fallbackPage] = await Promise.all([
+  const [settings, page = fallbackPage, classes] = await Promise.all([
     getSettings({ token }),
     getHomePage({ token }),
+    getClasses({token})
   ])
 
   return {
     props: {
       page,
       settings,
+      classes,
       preview,
       token: previewData.token ?? null,
     },

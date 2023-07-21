@@ -89,11 +89,32 @@ export interface ShowcaseProject {
   title?: string
 }
 
-export interface IyengarClass {
+export interface YogaClass {
+ weekday: string | number;
+  time: {
+    start: string
+    end: string
+  }
   description: string
   title: string
   _id: string
   level: string
+  classType: 'hybrid' | 'online' | 'in-person'
+  venue?:{
+    name: string
+    url: string
+    _id: string
+    description: string
+    address: {
+      postalCode: string
+      state: string
+      country: string
+      other: string
+      city: string
+      street: string
+    }
+  }
+  registerUrl:string
   classResources?:{
     title: string
     url:string
@@ -110,6 +131,7 @@ export interface HomePagePayload {
   pageContent?: PageContent
   title?: string
 }
+
 
 export interface PagePayload {
   seo?: SEO

@@ -13,8 +13,8 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { person, policy, venue } from 'schemas/documents'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
-import { questionAndAnswer } from 'schemas/objects'
-import duration from 'schemas/objects/duration'
+import { questionAndAnswer, timeValueType } from 'schemas/objects'
+import {duration} from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
 import home from 'schemas/singletons/home'
@@ -84,6 +84,7 @@ export default defineConfig({
       questionAndAnswer,
       scheduleType,
       seo,
+      timeValueType,
       socialType,
       timeRange,
       milestone,

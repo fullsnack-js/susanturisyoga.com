@@ -1,5 +1,4 @@
 import { defineField, defineType } from 'sanity'
-
 import { getIcon } from '../utils/get-icon'
 
 const yogaResources = defineType({
@@ -71,6 +70,26 @@ export const yogaClass = defineType({
     defineField({
       name: 'schedule',
       type: 'schedule',
+    }),
+    defineField({
+      name: 'day',
+      type: 'string',
+      title: 'Weekday',
+      options: {
+        list: [
+          {title: 'Sunday', value: '0'},
+          {title: 'Monday', value: '1'},
+          {title: 'Tuesday', value: '2'},
+          {title: 'Wednesday', value: '3'},
+          {title: 'Thursday', value: '4'},
+          {title: 'Friday', value: '5'},
+          {title: 'Saturday', value: '6'},
+        ]
+      }
+    }),
+    defineField( {
+      name: 'duration',
+      type: 'duration',
     }),
     defineField({
       name: 'setting',

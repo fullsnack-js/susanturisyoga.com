@@ -30,16 +30,20 @@ export const homePageQuery = groq`
   }
 `
 
-export const classesQuery =  groq`
-*[_type=="class"]|order(level asc){
-  description,
-  title,
-  _type,
-  _id,
-  level
-}
-`
 
+export const classesQuery= groq`
+  *[_type=="class"]{
+    _id,
+    "weekday": day,
+    "time": duration,
+    title,
+    level,
+    description,
+    "classType": setting.classType,
+    "registerUrl": setting.registerUrl,
+    "venue": setting.venue->,
+  }
+`
 export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
 `
