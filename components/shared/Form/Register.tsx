@@ -1,18 +1,20 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import ReactDOM from 'react-dom'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
 import axios from 'axios'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { YogaClass } from 'types'
+import { convertTime } from '../Schedule'
+import { Dialog, Transition } from "@headlessui/react";
+import { getDay } from 'date-fns'
 
-
-const dateSchema = z.coerce.date();
 
 const validationSchema = z.object({
-  class: z.string(),
-  date: dateSchema,
+  classTitle: z.string(),
+  dateInput: z.string(),
   firstName: z.string().min(1, { message: 'First name is required' }),
   lastName: z.string().min(1, { message: 'Last name is required' }),
   email: z.string().min(1, { message: 'Email is required' }).email({
@@ -24,27 +26,29 @@ const validationSchema = z.object({
     .max(500, { message: 'Message must not exceed 500 characters' }),
 })
 type FormInputs = z.infer<typeof validationSchema>
-export default function ContactForm() {
+
+export default function RegisterForm({classes}:{classes:YogaClass[]}) {
   const {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormInputs>({
     resolver: zodResolver(validationSchema),
   })
   const [result, setResult] = useState<string>();
   const [resultColor, setResultColor] = useState<string>();
+
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
-  const params = {email: data.email, messageBody: data.messageBody, firstName: data.firstName, lastName: data.lastName}
-  
+  const params = {classTitle:data.classTitle, email: data.email, messageBody: data.messageBody, firstName: data.firstName, lastName: data.lastName, classDate:data.dateInput}
 
   try {
     const response = await axios.post('/api/register', params)
     if (response.status === 200) {
       // Handle success. You can change the message to whatever you want.
       setResult(
-        "Your message has been sent. Thank you for contacting us. We will get back to you as soon as possible."
+        `Thank you for signing up for ${params.classTitle}!`
       );
       setResultColor("text-green-500");
       // Reset the form after successful submission
@@ -56,17 +60,98 @@ export default function ContactForm() {
     setResultColor("text-red-500");
   }
  }
+ const sorter = {
+  0:"Sunday", // << if sunday is first day of week
+  1:"Monday",
+  2:"Tuesday",
+  3: "Wednesday",
+  4:"Thursday",
+  5: "Friday",
+  6:"Saturday"
+}
+const currWeek = Array.from(Array(7).keys()).map((idx) => {const d = new Date(); d.setDate(d.getDate() - d.getDay() + idx); return d; });
+// const isDayOfTheWeek = (date) => {
+//   const day = getDay(date);
+//  return day === +weekday
+// }
 
+// const [startDate, setStartDate] = useState(currWeek[+weekday]);
+// console.log({weekday})
 
-  
 
   return (
-    <div className="drop-shadow border-solid border-2 rounded-md border-gray-300 isolate bg-white py-24 px-6 sm:py-32 lg:px-8 mt-6">
+  
+                <div className="w-full rounded-2xl transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <h2 className="mb-4 text-lg font-medium leading-6 text-gray-900 dark:text-gray-200">Class Registration</h2>
+   
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="mx-auto -mt-6 max-w-xl rounded sm:-mt-20"
       >
+        <div>
+          {/* <Controller 
+            name="dateInput"
+            control={control}
+            render={({ field }) => (
+              <ReactDatePicker
+              selected={startDate}
+              placeholderText='Select date'
+        onChange={(date) => setStartDate(date)}
+        value={startDate}
+              minDate={new Date()}
+              
+            />
+            )} */}
+          {/* /> */}
+        </div>
         <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2">
+        <div>
+            <label
+              htmlFor="classTitle"
+              className="block text-sm font-semibold leading-6 text-gray-900"
+            >
+              Class
+            </label>
+            <div className="mt-2.5">
+              <select
+                id="classTitle"
+                className="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                {...register('classTitle')}
+              >
+                {classes.map((yogaClass, idx) => (
+                  <option value={`${sorter[+yogaClass.weekday].toUpperCase()} at ${convertTime({startTime: yogaClass.time.start, endTime: yogaClass.time.end})}`}>{`${yogaClass.title} | ${sorter[+yogaClass.weekday]} ${convertTime({startTime: yogaClass.time.start, endTime: yogaClass.time.end})}`}</option>
+                ))}
+              </select>
+              {/* {errors.firstName && (
+                <p className="mt-2 text-xs italic text-red-500">
+                  {' '}
+                  {errors.firstName?.message}
+                </p>
+              )} */}
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="first-name"
+              className="block text-sm font-semibold leading-6 text-gray-900"
+            >
+              Class Date
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                id="dateInput"
+                className="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                {...register('dateInput')}
+              />
+              {errors.dateInput && (
+                <p className="mt-2 text-xs italic text-red-500">
+                  {' '}
+                  {errors.dateInput?.message}
+                </p>
+              )}
+            </div>
+          </div>
           <div>
             <label
               htmlFor="first-name"
@@ -113,7 +198,7 @@ export default function ContactForm() {
               )}
             </div>
           </div>
-
+          
           <div className="sm:col-span-2">
             <label
               htmlFor="email"
@@ -143,7 +228,7 @@ export default function ContactForm() {
               htmlFor="message"
               className="block text-sm font-semibold leading-6 text-gray-900"
             >
-              Message
+              Notes
             </label>
             <div className="mt-2.5">
               <textarea
@@ -182,5 +267,6 @@ export default function ContactForm() {
         </div>
       </form>
     </div>
+  
   )
 }

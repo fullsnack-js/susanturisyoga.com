@@ -99,7 +99,7 @@ export interface YogaClass {
   title: string
   _id: string
   level: string
-  classType: 'hybrid' | 'online' | 'in-person'
+  classType: string
   venue?:{
     name: string
     url: string

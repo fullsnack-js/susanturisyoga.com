@@ -3,7 +3,7 @@ import { SiteMeta } from 'components/global/SiteMeta'
 import { ProjectPayload } from 'types'
 
 export interface ProjectPageHeadProps {
-  project: ProjectPayload | undefined
+  project?: ProjectPayload | undefined
   title: string | undefined
 }
 
