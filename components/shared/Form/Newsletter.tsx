@@ -44,11 +44,11 @@ export default function Subscribe() {
   };
 
   return (
-    <div className="border border-brand-300 rounded p-6 my-4 w-full dark:border-gray-800 bg-brand-200/[.50] dark:bg-black-charcoal">
-      <p className="text-lg md:text-xl lg:text-center font-bold text-gray-900 dark:text-gray-100">
+    <div className="border border-brand-300 rounded p-6 my-4 w-full dark:border-gray-800 bg-brand-200/[.50]">
+      <p className="text-lg md:text-xl lg:text-center font-bold text-gray-900">
         Subscribe to the newsletter
       </p>
-      <p className="my-1 lg:text-center text-gray-800 dark:text-gray-200">
+      <p className="my-1 lg:text-center text-gray-800">
         Get emails from me about yoga, mindfulness, sutras and weekly inspiration.
       </p>
       <form className="relative my-4 lg:flex lg:justify-center" onSubmit={subscribe}>
