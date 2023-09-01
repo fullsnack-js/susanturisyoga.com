@@ -19,7 +19,6 @@ import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
 import home from 'schemas/singletons/home'
 import settings from 'schemas/singletons/settings'
-
 import { globalSettings } from './schemas/documents/globalSettings'
 import { yogaClass } from './schemas/documents/yogaClass'
 import { ctaType } from './schemas/objects/callToAction'

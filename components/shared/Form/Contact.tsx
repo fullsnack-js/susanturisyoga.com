@@ -54,7 +54,7 @@ export default function ContactForm() {
   
 
   return (
-    <div className="drop-shadow border-solid border-2 rounded-md border-gray-300 isolate bg-white py-24 px-6 sm:py-32 lg:px-8 mt-6">
+    <div className="drop-shadow border-solid border-1 rounded-md border-gray-500 isolate bg-white py-24 px-6 sm:py-32 lg:px-8 mt-6">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="mx-auto -mt-6 max-w-xl rounded sm:-mt-20"
@@ -161,7 +161,7 @@ export default function ContactForm() {
             isSubmitting
               ? "opacity-50 cursor-not-allowed"
               : "opacity-100 cursor-pointer"
-          } bg-black hover:bg-gray-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline duration-300`}
+          } bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline duration-300`}
           type="submit"
           disabled={isSubmitting}
           onClick={handleSubmit(onSubmit)}

@@ -1,5 +1,4 @@
 import { Footer } from 'components/global/Footer'
-import { N,Navbar } from 'components/global/Navbar'
 import Nav from 'components/global/Nav'
 import Sidebar from 'components/global/Sidebar'
 import { PreviewBanner } from 'components/preview/PreviewBanner'

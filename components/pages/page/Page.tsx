@@ -87,7 +87,7 @@ export function Page({ page, settings, homePageTitle, preview, classes }: PagePr
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <div className='mt-4'>
+        <div className='-mt-6'>
           <div className="mb-14 px-4 md:px-6">
             {coverImage && (
               <div className="flex items-center justify-center">
@@ -141,7 +141,7 @@ export function Page({ page, settings, homePageTitle, preview, classes }: PagePr
               <button
                 type="submit"
                 // disabled={isSubscribed || isLoading}
-                className="flex w-full items-center justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full items-center justify-center rounded-md bg-brand-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
               
             Subscribe

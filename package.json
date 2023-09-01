@@ -14,6 +14,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@catherineriver/sanity-plugin-generate-ogimage": "^1.0.5",
     "@fullcalendar/core": "^6.1.5",
     "@fullcalendar/daygrid": "^6.1.5",
     "@fullcalendar/google-calendar": "^6.1.5",
@@ -49,6 +50,7 @@
     "next-google-fonts": "^2.2.0",
     "next-sanity": "^4.0.4",
     "next-sanity-image": "^6.0.0",
+    "next-sitemap": "^4.2.2",
     "nodemailer": "^6.9.3",
     "react": "^18.2.0",
     "react-datepicker": "^4.15.0",

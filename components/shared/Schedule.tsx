@@ -100,8 +100,8 @@ export default function WeekSchedule({classes}:{classes: YogaClass[]}) {
                 </span>
               </dd>
 <div className='flex items-center p-4'>
-{yogaClass.registerUrl.includes('iyengar')?(<button className='rounded-md p-2 bg-indigo-200 font-bold text-white'><a href={yogaClass.registerUrl}>Sign Up &rarr;</a>
-</button>) : (<><button className='rounded-md p-2 bg-indigo-200 font-bold text-white'><Link href={'/register'}>Sign Up &rarr;</Link>
+{yogaClass.registerUrl.includes('iyengar')?(<button className='rounded-md p-2 bg-sky-600 hover:bg-sky-500 font-bold text-white'><a href={yogaClass.registerUrl}>Sign Up &rarr;</a>
+</button>) : (<><button className='rounded-md p-2 bg-sky-600 hover:bg-sky-500 font-bold text-white'><Link href={'/register'}>Sign Up &rarr;</Link>
 </button></>)}
 </div></dl>
 

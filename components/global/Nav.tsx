@@ -48,7 +48,7 @@ return (
      </div>
    
      <div className="justify-end items-center p-0 mr-4 md:mr-0 sm:py-2"> 
-         <button className="inline-flex justify-end items-center rounded-md bg-amber-500 hover:bg-amber-400 border-0 p-2 mr-6 text-white">
+         <button className="inline-flex justify-end items-center rounded-md bg-emerald-600 hover:bg-emerald-500 border-0 p-2 mr-6 text-white">
            <Link href="/schedule">Take a Class &rarr;</Link>
          </button>
        </div>
@@ -60,8 +60,8 @@ return (
                   ) : (
                     <svg
           onClick={() => setShowSidebar(!showSidebar)}
-          className="fixed mt-2 z-30 flex items-center cursor-pointer right-10 top-4"
-          fill="#2563EB"
+          className="fixed mt-2 z-100 flex items-center cursor-pointer right-10 top-4 text-brand-400"
+          // fill="#2563EB"
           viewBox="0 0 100 80"
           width="40"
           height="40"
@@ -73,15 +73,15 @@ return (
                   )}
                 </button>
           <div
-        className={`top-0 right-0 w-[50vw] bg-sky-300/[0.97] p-10 pl-20 text-white fixed h-full z-40  ease-in-out duration-300 ${
+        className={`top-0 right-0 w-[50vw] bg-brand-200/[0.97] px-5 py-5 pl-10 text-white fixed h-full z-40  ease-in-out duration-300 ${
           showSidebar ? "translate-x-0 " : "translate-x-full"
         }`}
       >
-        <h3 className="mt-20 text-4xl font-semibold text-white">
+        <h3 className="mt-20 text-4xl font-sans font-semibold text-white">
           Susan Turis Yoga
         </h3>
         <ul>
-        <div className="text-sm flex flex-col w-[8em] sm:w-[10em] mr-0a">
+        <div className="text-sm flex flex-col w-[12em] sm:w-[10em] mr-0">
          {/* <a href="#" className="mt-4 inline-block lg:mt-0 text-white-200 mr-4"> */}
          {menuItems &&
         menuItems.filter(menuItem => menuItem?.title != 'contact').map((menuItem, key) => {
@@ -92,7 +92,7 @@ return (
           return (
             <Link
               key={key}
-              className={`text-sm sm:text-lg mt-4 hover:text-gray-300 mr-4 text-gray-600 md:text-xl`}
+              className={`text-sm sm:text-lg mt-4 hover:text-gray-700 mr-4 text-black md:text-xl`}
               href={href}
             >
             {menuItem._type == 'home' ? 'Home' : menuItem.title}{' '}
@@ -101,11 +101,11 @@ return (
         })}
         
         
-        <button className="inline-flex justify-end items-center rounded-md bg-amber-500 hover:bg-amber-400 border-0 p-2 mr-6 text-white">
+        <button className="inline-flex justify-end items-center mt-4 rounded-md bg-emerald-500 hover:bg-emerald-400 border-0 p-2 mr-6 text-white">
            <Link href='/schedule'>Take a Class &rarr;</Link>
          </button>
          {/* </a> */}
-        
+         
        </div>
         </ul>
       </div>    
