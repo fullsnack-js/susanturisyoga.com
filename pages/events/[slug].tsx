@@ -12,7 +12,7 @@ import { GetStaticProps } from 'next'
 import { lazy } from 'react'
 import { EventPayload, SettingsPayload } from 'types'
 
-const ProjectPreview = lazy(() => import('components/pages/event/EventPreview'))
+const EventPreview = lazy(() => import('components/pages/event/EventPreview'))
 
 interface PageProps {
   event?: EventPayload
