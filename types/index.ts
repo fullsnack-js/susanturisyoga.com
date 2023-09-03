@@ -80,7 +80,7 @@ export interface MilestoneItem {
   title?: string
 }
 
-export interface ShowcaseProject {
+export interface ShowcaseEvent {
   _type: string
   coverImage?: Image
   overview?: PortableTextBlock[]
@@ -130,6 +130,7 @@ export interface HomePagePayload {
   landingCta?: CTA
   pageContent?: PageContent
   title?: string
+  showcaseEvents?: ShowcaseEvent[]
 }
 
 
@@ -143,7 +144,7 @@ export interface PagePayload {
   slug?: string
 }
 
-export interface ProjectPayload {
+export interface EventPayload {
   client?: string
   coverImage?: Image
   description?: PortableTextBlock[]

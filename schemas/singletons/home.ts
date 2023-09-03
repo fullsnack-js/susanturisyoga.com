@@ -82,19 +82,19 @@ export default defineType({
         { type: 'figure' },
       ],
     }),
-    // defineField({
-    //   name: 'showcaseProjects',
-    //   title: 'Showcase projects',
-    //   description:
-    //     'These are the projects that will appear first on your landing page.',
-    //   type: 'array',
-    //   of: [
-    //     defineArrayMember({
-    //       type: 'reference',
-    //       to: [{ type: 'project' }],
-    //     }),
-    //   ],
-    // }),
+    defineField({
+      name: 'showcaseEvents',
+      title: 'Showcase events',
+      description:
+        'These are the events that will appear first on your landing page.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'event' }],
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

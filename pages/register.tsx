@@ -1,13 +1,13 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
-import { RegisterPage } from 'components/pages/project/ProjectPage'
+import { RegisterPage } from 'components/pages/register/RegisterPage'
 import { PreviewWrapper } from 'components/preview/PreviewWrapper'
 import { getHomePage, getSettings,getClasses } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
 import { HomePagePayload, SettingsPayload, YogaClass} from 'types'
 
-const ProjectPagePreview = lazy(
-  () => import('components/pages/project/ProjectPreview')
+const RegisterPagePreview = lazy(
+  () => import('components/pages/register/RegisterPreview')
 )
 
 interface PageProps {
@@ -38,7 +38,7 @@ export default function IndexPage(props: PageProps) {
           </PreviewWrapper>
         }
       >
-        <ProjectPagePreview token={token} />
+        <RegisterPagePreview homePageTitle={page.title} classes={classes} settings={settings} preview={preview} token={token} />
       </PreviewSuspense>
     )
   }

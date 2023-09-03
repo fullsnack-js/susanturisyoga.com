@@ -1,5 +1,7 @@
 import 'styles/index.css'
+import { DefaultSeo } from 'next-seo';
 
+import SEO from '../next-seo.config';
 import { IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
 import { AppProps } from 'next/app'
 
@@ -34,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-
+      <DefaultSeo {...SEO} />
       <Component {...pageProps} />
     </>
   )

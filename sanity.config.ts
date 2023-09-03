@@ -12,7 +12,7 @@ import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { person, policy, venue } from 'schemas/documents'
 import page from 'schemas/documents/page'
-import project from 'schemas/documents/project'
+import event from 'schemas/documents/event'
 import { questionAndAnswer, timeValueType } from 'schemas/objects'
 import {duration} from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
@@ -44,7 +44,7 @@ const title =
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
   page.name,
-  project.name,
+  event.name,
 ]
 
 export default defineConfig({
@@ -64,7 +64,7 @@ export default defineConfig({
       page,
       person,
       policy,
-      project,
+      event,
       venue,
       yogaClass,
 

@@ -1,9 +1,11 @@
 import { DocumentIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { eventDuration } from 'schemas/fields/eventDuration'
+import { classSettingType } from 'schemas/objects'
 
 export default defineType({
-  name: 'project',
-  title: 'Project',
+  name: 'event',
+  title: 'Event',
   type: 'document',
   icon: DocumentIcon,
   // Uncomment below to have edits publish automatically as you type
@@ -11,8 +13,15 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your project.',
+      description: 'This field is the title of your event.',
       title: 'Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'subtitle',
+      description: 'This field is the title of your event.',
+      title: 'Subtitle',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -30,7 +39,7 @@ export default defineType({
     defineField({
       name: 'overview',
       description:
-        'Used both for the <meta> description tag for SEO, and project subheader.',
+        'Used both for the <meta> description tag for SEO, and event subheader.',
       title: 'Overview',
       type: 'array',
       of: [
@@ -67,11 +76,7 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'duration',
-      title: 'Duration',
-      type: 'duration',
-    }),
+    eventDuration,
     defineField({
       name: 'client',
       title: 'Client',
@@ -120,6 +125,12 @@ export default defineType({
         defineArrayMember({
           name: 'timeline',
           type: 'timeline',
+        }),
+        defineField({
+          name: 'setting',
+          type: 'setting',
+          validation: (rule) =>
+            rule.required().error('Must provide a setting for this class.'),
         }),
         defineField({
           type: 'image',

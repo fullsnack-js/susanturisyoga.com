@@ -1,4 +1,4 @@
-import { ProjectListItem } from 'components/pages/home/ProjectListItem'
+import { ProjectListItem } from 'components/pages/home/EventListItem'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 // import HookForm from 'components/shared/Form'
 import { Header } from 'components/shared/Header'
@@ -47,7 +47,7 @@ export function HomePage({ page, settings, classes, preview }: HomePageProps) {
       <Layout home settings={settings} preview={preview}>
         <div className="-mt-20 mx-auto w-full space-y-6">
           {/* Header */}
-          <div className="w-full sm:-mt-48 container sm:mb-80 md:mb-8 flex flex-col sm:flex-row items-center pb-0 sm:justify-center sm:space-x-4 sm:pb-4 md:mb-6 h-[90vh] md:px-10 md:pb-0 lg:px-12 lg:pb-32 xl:px-14">
+          <div className="w-full sm:-mt-20 container mb-60 sm:mb-10 md:mb-8 flex flex-col sm:flex-row items-center pb-0 sm:justify-center sm:space-x-4 sm:pb-4 md:mb-6 h-[90vh] md:px-10 md:pb-0 lg:px-12 lg:pb-32 xl:px-14">
             {pageHero && (
               <div className="w-full justify-center sm:w-1/2 md:h-3/5 drop-shadow-xl px-4">
                 <Image
@@ -93,7 +93,7 @@ export function HomePage({ page, settings, classes, preview }: HomePageProps) {
             </div>
           </div>
 
-          <div className="mt-64 md:mt-12 pt-72 sm:pt-4 container px-4 pb-6">
+          <div className="mt-72 sm:mt-8 md:mt-12 container sm:px-4 pb-6">
             {' '}
             {/* <Schedule /> */}
             <div className='p-4'>

@@ -2,23 +2,24 @@ import { usePreview } from 'lib/sanity.preview'
 import { projectBySlugQuery } from 'lib/sanity.queries'
 import type { ProjectPayload } from 'types'
 
-import { ProjectPage, ProjectPageProps } from './ProjectPage'
+import { RegisterPage, RegisterPageProps } from './RegisterPage'
 
 export default function ProjectPreview({
   token,
   settings,
-  project,
+  classes,
   homePageTitle,
 }: {
   token: null | string
-} & ProjectPageProps) {
-  const projectPreview: ProjectPayload = usePreview(token, projectBySlugQuery, {
-    slug: project?.slug,
-  })
+} & RegisterPageProps) {
+  // const projectPreview: ProjectPayload = usePreview(token, projectBySlugQuery, {
+  //   slug: project?.slug,
+  // })
 
   return (
-    <ProjectPage
-      project={projectPreview}
+    <RegisterPage
+      // project={projectPreview}
+      classes={classes}
       settings={settings}
       homePageTitle={homePageTitle}
       preview={true}

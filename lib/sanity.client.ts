@@ -7,8 +7,8 @@ import {
   homePageTitleQuery,
   pagePaths,
   pagesBySlugQuery,
-  projectBySlugQuery,
-  projectPaths,
+  eventBySlugQuery,
+  eventPaths,
   settingsQuery,
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
@@ -17,7 +17,7 @@ import { Image } from 'sanity'
 import type {
   HomePagePayload,
   PagePayload,
-  ProjectPayload,
+  EventPayload,
   SettingsPayload,
 } from 'types'
 /**
@@ -80,15 +80,15 @@ export async function getPagePaths(): Promise<string[]> {
   return await sanityClient()?.fetch(pagePaths)
 }
 
-export async function getProjectPaths(): Promise<string[]> {
-  return await sanityClient()?.fetch(projectPaths)
+export async function getEventPaths(): Promise<string[]> {
+  return await sanityClient()?.fetch(eventPaths)
 }
-export async function getProjectBySlug({
+export async function getEventBySlug({
   slug,
   token,
 }: {
   slug: string
   token?: string
-}): Promise<ProjectPayload | undefined> {
-  return await sanityClient(token)?.fetch(projectBySlugQuery, { slug })
+}): Promise<EventPayload | undefined> {
+  return await sanityClient(token)?.fetch(eventBySlugQuery, { slug })
 }

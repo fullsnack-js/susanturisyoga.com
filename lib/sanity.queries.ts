@@ -17,7 +17,7 @@ export const homePageQuery = groq`
     pageContent{${pageContentQuery}},
     pageHero{${figureQuery}},
     landingCta{${ctaQuery}},
-    showcaseProjects[]->{
+    showcaseEvents[]->{
       _type,
       coverImage,
       overview,
@@ -77,8 +77,8 @@ export const settingsQuery = groq`
   }
 `
 
-export const projectBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0] {
+export const eventBySlugQuery = groq`
+  *[_type == "event" && slug.current == $slug][0] {
     _id,
     client,
     coverImage,
@@ -92,6 +92,6 @@ export const projectBySlugQuery = groq`
   }
 `
 
-export const projectPaths = groq`
-  *[_type == "project" && slug.current != null].slug.current
+export const eventPaths = groq`
+  *[_type == "event" && slug.current != null].slug.current
 `

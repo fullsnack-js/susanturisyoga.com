@@ -7,7 +7,7 @@ import Link from 'next/link'
 import type { ProjectPayload, SettingsPayload, YogaClass } from 'types'
 
 import Layout from '../../shared/Layout'
-import ProjectPageHead from './ProjectPageHead'
+import RegisterPageHead from './RegisterPageHead'
 import RegisterForm from 'components/shared/Form/Register'
 
 export interface RegisterPageProps {
@@ -30,7 +30,7 @@ export function RegisterPage({
   return (
     <>
       <Head>
-        <ProjectPageHead title={homePageTitle} />
+        <RegisterPageHead title={homePageTitle} />
       </Head>
 
       <Layout settings={settings} preview={preview}>

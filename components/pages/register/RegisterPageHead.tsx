@@ -2,15 +2,15 @@ import { toPlainText } from '@portabletext/react'
 import { SiteMeta } from 'components/global/SiteMeta'
 import { ProjectPayload } from 'types'
 
-export interface ProjectPageHeadProps {
+export interface RegisterPageHeadProps {
   project?: ProjectPayload | undefined
   title: string | undefined
 }
 
-export default function ProjectPageHead({
+export default function RegisterPageHead({
   project,
   title,
-}: ProjectPageHeadProps) {
+}: RegisterPageHeadProps) {
   return (
     <SiteMeta
       baseTitle={title}

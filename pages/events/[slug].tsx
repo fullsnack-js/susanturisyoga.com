@@ -1,21 +1,21 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
-import { ProjectPage } from 'components/pages/project/ProjectPage'
+import { EventPage } from 'components/pages/event/EventPage'
 import { PreviewWrapper } from 'components/preview/PreviewWrapper'
 import {
   getHomePageTitle,
-  getProjectBySlug,
-  getProjectPaths,
+  getEventBySlug,
+  getEventPaths,
   getSettings,
 } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { ProjectPayload, SettingsPayload } from 'types'
+import { EventPayload, SettingsPayload } from 'types'
 
-const ProjectPreview = lazy(() => import('components/pages/project/ProjectPreview'))
+const ProjectPreview = lazy(() => import('components/pages/event/EventPreview'))
 
 interface PageProps {
-  project?: ProjectPayload
+  event?: EventPayload
   settings?: SettingsPayload
   homePageTitle?: string
   preview: boolean
@@ -30,26 +30,26 @@ interface PreviewData {
   token?: string
 }
 
-export default function ProjectSlugRoute(props: PageProps) {
-  const { homePageTitle, settings, project, preview, token } = props
+export default function EventSlugRoute(props: PageProps) {
+  const { homePageTitle, settings, event, preview, token } = props
 
   if (preview) {
     return (
       <PreviewSuspense
         fallback={
           <PreviewWrapper>
-            <ProjectPage
+            <EventPage
               homePageTitle={homePageTitle}
-              project={project}
+              event={event}
               settings={settings}
               preview={preview}
             />
           </PreviewWrapper>
         }
       >
-        <ProjectPreview
+        <EventPreview
           token={token}
-          project={project}
+          event={event}
           settings={settings}
           homePageTitle={homePageTitle}
         />
@@ -58,9 +58,9 @@ export default function ProjectSlugRoute(props: PageProps) {
   }
 
   return (
-    <ProjectPage
+    <EventPage
       homePageTitle={homePageTitle}
-      project={project}
+      event={event}
       settings={settings}
       preview={preview}
     />
@@ -76,13 +76,13 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, project, homePageTitle] = await Promise.all([
+  const [settings, event, homePageTitle] = await Promise.all([
     getSettings({ token }),
-    getProjectBySlug({ token, slug: params.slug }),
+    getEventBySlug({ token, slug: params.slug }),
     getHomePageTitle({ token }),
   ])
 
-  if (!project) {
+  if (!event) {
     return {
       notFound: true,
     }
@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: {
-      project,
+      event,
       settings,
       homePageTitle,
       preview,
@@ -100,10 +100,10 @@ export const getStaticProps: GetStaticProps<
 }
 
 export const getStaticPaths = async () => {
-  const paths = await getProjectPaths()
+  const paths = await getEventPaths()
 
   return {
-    paths: paths?.map((slug) => resolveHref('project', slug)) || [],
+    paths: paths?.map((slug) => resolveHref('event', slug)) || [],
     fallback: false,
   }
 }

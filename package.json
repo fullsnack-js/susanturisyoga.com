@@ -50,6 +50,7 @@
     "next-google-fonts": "^2.2.0",
     "next-sanity": "^4.0.4",
     "next-sanity-image": "^6.0.0",
+    "next-seo": "^6.1.0",
     "next-sitemap": "^4.2.2",
     "nodemailer": "^6.9.3",
     "react": "^18.2.0",
