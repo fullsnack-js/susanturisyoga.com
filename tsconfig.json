@@ -21,6 +21,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "schemas/utils/DurationInput.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "schemas/utils/DurationInput.tsx", "next-sitemap.config.js"],
   "exclude": ["node_modules"]
 }
