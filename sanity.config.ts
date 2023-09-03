@@ -39,7 +39,7 @@ import { timeRange } from './schemas/objects/time-range'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  'Susan Turis Yoga'
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
