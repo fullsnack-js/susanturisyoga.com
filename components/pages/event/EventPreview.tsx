@@ -1,24 +1,24 @@
 import { usePreview } from 'lib/sanity.preview'
-import { projectBySlugQuery } from 'lib/sanity.queries'
-import type { ProjectPayload } from 'types'
+import { eventBySlugQuery } from 'lib/sanity.queries'
+import type { EventPayload } from 'types'
 
-import { ProjectPage, ProjectPageProps } from './EventPage'
+import { EventPage, EventPageProps } from './EventPage'
 
-export default function ProjectPreview({
+export default function EventPreview({
   token,
   settings,
-  project,
+  event,
   homePageTitle,
 }: {
   token: null | string
-} & ProjectPageProps) {
-  const projectPreview: ProjectPayload = usePreview(token, projectBySlugQuery, {
-    slug: project?.slug,
+} & EventPageProps) {
+  const eventPreview: EventPayload = usePreview(token, projectBySlugQuery, {
+    slug: event?.slug,
   })
 
   return (
-    <ProjectPage
-      project={projectPreview}
+    <EventPage
+      event={eventPreview}
       settings={settings}
       homePageTitle={homePageTitle}
       preview={true}
