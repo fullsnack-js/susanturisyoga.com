@@ -40,7 +40,7 @@ export default defineType({
       name: 'overview',
       description:
         'Used both for the <meta> description tag for SEO, and event subheader.',
-      title: 'Overview',
+      title: 'Event Overview',
       type: 'array',
       of: [
         // Paragraphs
@@ -78,9 +78,10 @@ export default defineType({
     }),
     eventDuration,
     defineField({
-      name: 'client',
-      title: 'Client',
-      type: 'string',
+      name: 'setting',
+      type: 'setting',
+      validation: (rule) =>
+        rule.required().error('Must provide a setting for this class.'),
     }),
     defineField({
       name: 'site',
@@ -98,7 +99,7 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      title: 'Project Description',
+      title: 'Event Description',
       type: 'array',
       of: [
         defineArrayMember({
