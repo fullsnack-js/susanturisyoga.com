@@ -12,7 +12,7 @@ export default function EventPreview({
 }: {
   token: null | string
 } & EventPageProps) {
-  const eventPreview: EventPayload = usePreview(token, projectBySlugQuery, {
+  const eventPreview: EventPayload = usePreview(token, eventBySlugQuery, {
     slug: event?.slug,
   })
 
