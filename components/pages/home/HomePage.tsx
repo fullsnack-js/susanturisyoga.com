@@ -1,4 +1,4 @@
-import { ProjectListItem } from 'components/pages/home/EventListItem'
+import { EventListItem, ProjectListItem } from 'components/pages/home/EventListItem'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 // import HookForm from 'components/shared/Form'
 import { Header } from 'components/shared/Header'
@@ -33,7 +33,7 @@ export interface HomePageProps {
 }
 //const imageUrl = image && urlForImage(image)?.height(height).width(width).fit('crop').url()
 export function HomePage({ page, settings, classes, preview }: HomePageProps) {
-  const { overview, landingCta, pageContent, pageHero, title } = page ?? {}
+  const { overview, landingCta, pageContent, pageHero, title, showcaseEvents } = page ?? {}
   const imageProps = useNextSanityImage(configuredSanityClient, pageHero.image)
   console.log({ image: pageHero.image.asset })
  
@@ -103,7 +103,7 @@ export function HomePage({ page, settings, classes, preview }: HomePageProps) {
             {pageContent && PageContentRenderer(pageContent)}
           </div>
           {/* Workaround: scroll to top on route change */}
-
+{showcaseEvents && showcaseEvents.map((event)=> <EventListItem event={event} odd={0} /> ) }
           <ScrollUp />
         </div>
       </Layout>

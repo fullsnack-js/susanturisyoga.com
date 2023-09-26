@@ -83,10 +83,35 @@ export interface MilestoneItem {
 export interface ShowcaseEvent {
   _type: string
   coverImage?: Image
+  description?: PortableTextBlock[]
   overview?: PortableTextBlock[]
   slug?: string
   tags?: string[]
   title?: string
+  site?:string
+  eventDuration: {
+    end:any;
+    start:any;
+  }
+  subtitle?:string
+  setting?:{
+    classType?: string
+  venue?:{
+    name: string
+    url: string
+    _id: string
+    description: string
+    address?: {
+      postalCode: string
+      state: string
+      country: string
+      other?: string
+      city: string
+      street: string
+    }
+  }
+  registerUrl?:string
+  }
 }
 
 export interface YogaClass {
