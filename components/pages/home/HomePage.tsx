@@ -21,10 +21,6 @@ import { SettingsPayload } from 'types'
 import HomePageHead from './HomePageHead'
 import WeekSchedule from 'components/shared/Schedule'
 
-
-
-
-
 export interface HomePageProps {
   settings?: SettingsPayload
   page?: HomePagePayload
