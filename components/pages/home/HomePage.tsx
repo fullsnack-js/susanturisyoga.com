@@ -1,4 +1,4 @@
-import { EventListItem, ProjectListItem } from 'components/pages/home/EventListItem'
+import { EventListItem } from 'components/pages/home/EventListItem'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 // import HookForm from 'components/shared/Form'
 import { Header } from 'components/shared/Header'
@@ -99,7 +99,7 @@ export function HomePage({ page, settings, classes, preview }: HomePageProps) {
             {pageContent && PageContentRenderer(pageContent)}
           </div>
           {/* Workaround: scroll to top on route change */}
-{showcaseEvents && showcaseEvents.map((event)=> <EventListItem event={event} odd={0} /> ) }
+{showcaseEvents.length >= 1 && showcaseEvents.map((event)=> <EventListItem event={event} odd={0} /> ) }
           <ScrollUp />
         </div>
       </Layout>
